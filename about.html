@@ -14,19 +14,11 @@
   --border: #e5e7eb;
 }
 
-html, body {
-  height: 100%;
-}
-
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
-
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 /* HEADER */
@@ -34,10 +26,6 @@ header {
   background: #111827;
   color: white;
   padding: 14px 24px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .header-left {
@@ -49,11 +37,12 @@ header {
 .logo {
   width: 40px;
   height: 40px;
-  object-fit: cover;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 nav {
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -72,21 +61,49 @@ nav a:hover {
   color: white;
 }
 
-/* MAIN */
-.container {
-  flex: 1;
-  max-width: 1000px;
+/* MAIN LAYOUT */
+.page {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 16px;
+  max-width: 1400px;
   margin: 30px auto;
   padding: 0 20px;
 }
 
-/* HERO */
+/* SIDE IMAGES */
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.side img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: 0.2s;
+}
+
+.side img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* CENTER CONTENT */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .hero {
-  background: #fff;
-  border: 1px solid var(--border);
+  background: white;
+  border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 24px;
-  margin-bottom: 18px;
 }
 
 .hero h1 {
@@ -96,21 +113,13 @@ nav a:hover {
 
 .hero p {
   margin: 0;
-  color: var(--muted);
+  color: #4b5563;
   line-height: 1.7;
 }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
 .card {
-  background: #fff;
-  border: 1px solid var(--border);
+  background: white;
+  border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 18px;
 }
@@ -122,7 +131,7 @@ nav a:hover {
 }
 
 .card p, .card li {
-  color: var(--muted);
+  color: #4b5563;
   line-height: 1.7;
   font-size: 14px;
 }
@@ -132,43 +141,16 @@ ul {
   padding-left: 18px;
 }
 
-/* GALLERY */
-.gallery-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 20px 0 12px;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  transition: 0.2s;
-}
-
-.gallery img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-}
-
 /* FOOTER */
 footer {
   background: #0f172a;
   color: #94a3b8;
   padding: 40px 20px;
-  margin-top: auto;
+  margin-top: 40px;
 }
 
 .footer-grid {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -192,6 +174,22 @@ footer a {
 footer a:hover {
   color: white;
 }
+
+/* MOBILE FIX */
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .side img {
+    min-width: 220px;
+  }
+}
 </style>
 </head>
 
@@ -213,54 +211,58 @@ footer a:hover {
   </nav>
 </header>
 
-<div class="container">
+<div class="page">
 
-  <div class="hero">
-    <h1>🏙 Civilian Operations Department</h1>
-    <p>
-      Welcome to Civ Ops. This department brings Kentucky State Roleplay to life through structured civilian interaction, businesses, and immersive roleplay systems.
-    </p>
+  <!-- LEFT IMAGES -->
+  <div class="side">
+    <img src="image1.png">
+    <img src="image2.png">
+    <img src="Screenshot_2026-04-08_001054.png">
+    <img src="MedalTVRoblox20260307201844677.png">
   </div>
 
-  <div class="grid">
+  <!-- CENTER CONTENT -->
+  <div class="content">
+
+    <div class="hero">
+      <h1>🏙 Civilian Operations Department</h1>
+      <p>
+        Welcome to Civ Ops. We manage civilian roleplay across Kentucky State Roleplay, ensuring realism, structure, and immersion.
+      </p>
+    </div>
 
     <div class="card">
       <div class="section-title">❓ What is Civ Ops?</div>
-      <p>Civ Ops manages all civilian roleplay and ensures realism across the server.</p>
+      <p>
+        Civilian Operations oversees all civilian RP within KSRP and forms the foundation of the server’s world and economy.
+      </p>
     </div>
 
     <div class="card">
       <div class="section-title">📋 Responsibilities</div>
       <ul>
-        <li>Create civilian RP scenarios</li>
-        <li>Manage businesses</li>
-        <li>Maintain realism & fairness</li>
-        <li>Support all RP departments</li>
+        <li>Create civilian roleplay scenarios</li>
+        <li>Manage businesses and economy systems</li>
+        <li>Maintain realism and fairness</li>
+        <li>Support all roleplay departments</li>
       </ul>
     </div>
 
     <div class="card">
       <div class="section-title">🤝 Get Involved</div>
-      <p>Join Civ Ops through community tickets or by contacting leadership.</p>
+      <p>
+        Join Civ Ops by participating in events, running businesses, or contacting leadership through community channels.
+      </p>
     </div>
 
   </div>
 
-  <!-- GALLERY -->
-  <div class="gallery-title">📸 Civ Ops Gallery</div>
-
-  <div class="gallery">
-    <img src="MedalTVRoblox20260307201844677.png">
+  <!-- RIGHT IMAGES -->
+  <div class="side">
     <img src="MedalTVRoblox20260307200704891_-_Copy.png">
     <img src="MedalTVRoblox20260307200735969_-_Copy.png">
-    <img src="MedalTVRoblox20260307200713770_-Copy.png">
-    <img src="MedalTVRoblox20260307193243532_-_Copy.png">
-    <img src="Screenshot_2026-04-08_001054.png">
-    <img src="image2.png">
-    <img src="image1.png">
-    <img src="image.png">
+    <img src="MedalTVRoblox20260307200713770_-_Copy.png">
     <img src="002.webp">
-    <img src="9xw23x9.png">
   </div>
 
 </div>
@@ -292,5 +294,6 @@ footer a:hover {
 </footer>
 
 </body>
+</html>
 </html>
 </html>
