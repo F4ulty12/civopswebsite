@@ -71,17 +71,23 @@ nav a:hover {
   padding: 0 20px;
 }
 
-/* SIDE IMAGES */
+/* SIDE COLUMN (CENTERED FIX) */
 .side {
   display: flex;
   flex-direction: column;
+  justify-content: center;   /* KEY FIX: vertical centering */
   gap: 18px;
 }
 
-/* ALL SIDE IMAGES */
+/* grouping container */
+.side-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* SIDE IMAGES */
 .side img {
   width: 100%;
-  aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: 14px;
   border: 1px solid #e5e7eb;
@@ -94,13 +100,13 @@ nav a:hover {
   box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
-/* DIVIDER IMAGE */
+/* DIVIDER (NOW PROPERLY HORIZONTAL + THIN) */
 .divider {
   width: 100%;
-  height: 18px;   /* controls thickness */
+  height: 16px;     /* thin separator */
   object-fit: cover;
   border-radius: 10px;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* CENTER CONTENT */
@@ -203,15 +209,6 @@ footer a:hover {
   border-radius: 12px;
 }
 
-.modal .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 32px;
-  color: white;
-  cursor: pointer;
-}
-
 /* MOBILE */
 @media (max-width: 900px) {
   .page {
@@ -219,16 +216,7 @@ footer a:hover {
   }
 
   .side {
-    flex-direction: row;
-    overflow-x: auto;
-  }
-
-  .side img {
-    min-width: 260px;
-  }
-
-  .divider {
-    min-width: 260px;
+    justify-content: flex-start;
   }
 }
 </style>
@@ -256,9 +244,17 @@ footer a:hover {
 
   <!-- LEFT -->
   <div class="side">
-    <img src="image1.png" onclick="openModal(this.src)">
+
+    <div class="side-group">
+      <img src="image1.png" onclick="openModal(this.src)">
+    </div>
+
     <img src="image.png" class="divider" onclick="openModal(this.src)">
-    <img src="image2.png" onclick="openModal(this.src)">
+
+    <div class="side-group">
+      <img src="image2.png" onclick="openModal(this.src)">
+    </div>
+
   </div>
 
   <!-- CENTER -->
@@ -288,7 +284,7 @@ footer a:hover {
       </ul>
     </div>
 
-    <div class="card">
+    <div class="card" id="get-involved">
       <div class="section-title">🤝 Get Involved</div>
       <p>
         Join Civ Ops by participating in events, running businesses, or contacting leadership through community channels.
@@ -299,9 +295,17 @@ footer a:hover {
 
   <!-- RIGHT -->
   <div class="side">
-    <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
+
+    <div class="side-group">
+      <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
+    </div>
+
     <img src="image.png" class="divider" onclick="openModal(this.src)">
-    <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
+
+    <div class="side-group">
+      <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
+    </div>
+
   </div>
 
 </div>
@@ -344,12 +348,11 @@ function openModal(src) {
 }
 
 function closeModal(e) {
-  if (e.target.id === "modal" || e.target.className === "close") {
+  if (e.target.id === "modal") {
     document.getElementById("modal").style.display = "none";
   }
 }
 </script>
 
 </body>
-</html>
 </html>
