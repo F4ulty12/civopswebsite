@@ -8,7 +8,10 @@
 <style>
 :root {
   --bg: #f4f6f8;
+  --card: #ffffff;
   --text: #111827;
+  --muted: #4b5563;
+  --border: #e5e7eb;
 }
 
 body {
@@ -25,6 +28,39 @@ header {
   padding: 14px 24px;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+nav {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
 /* MAIN LAYOUT */
 .page {
   display: grid;
@@ -35,7 +71,7 @@ header {
   padding: 0 20px;
 }
 
-/* SIDE COLUMNS (BOTH SIDES NOW MATCH) */
+/* SIDE COLUMNS (FIXED ALIGNMENT) */
 .side {
   display: grid;
   grid-template-rows: auto 1fr auto; /* top / spacer / bottom */
@@ -48,32 +84,68 @@ header {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: 14px;
-  cursor: pointer;
   border: 1px solid #e5e7eb;
-  transition: 0.2s;
+  cursor: pointer;
+  transition: 0.25s;
 }
 
 .side img:hover {
   transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
-/* spacer row */
+/* spacer */
 .spacer {
   display: block;
 }
 
-/* CENTER */
+/* CENTER CONTENT */
 .content {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.hero, .card {
+.hero {
   background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+
+.hero p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 18px;
-  border: 1px solid #e5e7eb;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card p, .card li {
+  color: #4b5563;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+ul {
+  margin: 0;
+  padding-left: 18px;
 }
 
 /* FOOTER */
@@ -84,6 +156,32 @@ footer {
   margin-top: 40px;
 }
 
+.footer-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+footer h3 {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+footer a {
+  display: block;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+footer a:hover {
+  color: white;
+}
+
 /* MODAL */
 .modal {
   display: none;
@@ -92,6 +190,7 @@ footer {
   background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .modal img {
@@ -120,12 +219,24 @@ footer {
 <body>
 
 <header>
-  <h2 style="margin:0; padding:14px 24px;">Civilian Operations</h2>
+  <div class="header-left">
+    <img src="loho.png" class="logo">
+    <h2>Civilian Operations</h2>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="cabinet.html">Board of Governors</a>
+    <a href="businesses.html">Businesses</a>
+    <a href="licensing.html">Licensing</a>
+    <a href="documents.html">Documents</a>
+  </nav>
 </header>
 
 <div class="page">
 
-  <!-- LEFT (FIXED) -->
+  <!-- LEFT -->
   <div class="side">
     <img src="image1.png" onclick="openModal(this.src)">
     <div class="spacer"></div>
@@ -136,32 +247,39 @@ footer {
   <div class="content">
 
     <div class="hero">
-      <h2>🏙 Civilian Operations</h2>
-      <p>We manage civilian roleplay across KSRP.</p>
+      <h1>🏙 Civilian Operations Department</h1>
+      <p>
+        Welcome to Civ Ops. We manage civilian roleplay across Kentucky State Roleplay, ensuring realism, structure, and immersion.
+      </p>
     </div>
 
     <div class="card">
-      <h3>What is Civ Ops?</h3>
-      <p>Oversees civilian RP and economy systems.</p>
+      <div class="section-title">❓ What is Civ Ops?</div>
+      <p>
+        Civilian Operations oversees all civilian RP within KSRP and forms the foundation of the server’s world and economy.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Responsibilities</h3>
+      <div class="section-title">📋 Responsibilities</div>
       <ul>
-        <li>Roleplay scenarios</li>
-        <li>Businesses</li>
-        <li>Economy balance</li>
+        <li>Create civilian roleplay scenarios</li>
+        <li>Manage businesses and economy systems</li>
+        <li>Maintain realism and fairness</li>
+        <li>Support all roleplay departments</li>
       </ul>
     </div>
 
     <div class="card" id="get-involved">
-      <h3>Get Involved</h3>
-      <p>Join Civ Ops events and RP activities.</p>
+      <div class="section-title">🤝 Get Involved</div>
+      <p>
+        Join Civ Ops by participating in events, running businesses, or contacting leadership through community channels.
+      </p>
     </div>
 
   </div>
 
-  <!-- RIGHT (FIXED) -->
+  <!-- RIGHT -->
   <div class="side">
     <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
     <div class="spacer"></div>
@@ -171,11 +289,33 @@ footer {
 </div>
 
 <footer>
-  <div style="text-align:center;">Civ Ops Footer</div>
+  <div class="footer-grid">
+
+    <div>
+      <h3>🏛 Civ Ops</h3>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="cabinet.html">Board of Governors</a>
+      <a href="documents.html">Documents</a>
+    </div>
+
+    <div>
+      <h3>📚 Resources</h3>
+      <a href="#">Economic Guidelines</a>
+      <a href="#">Rules & Regulations</a>
+    </div>
+
+    <div>
+      <h3>🌐 Community</h3>
+      <a href="#">Civ Ops Group</a>
+      <a href="#">KSRP Group</a>
+    </div>
+
+  </div>
 </footer>
 
 <!-- MODAL -->
-<div class="modal" id="modal" onclick="this.style.display='none'">
+<div class="modal" id="modal" onclick="closeModal(event)">
   <img id="modalImg">
 </div>
 
@@ -183,6 +323,12 @@ footer {
 function openModal(src){
   document.getElementById("modal").style.display="flex";
   document.getElementById("modalImg").src=src;
+}
+
+function closeModal(e){
+  if(e.target.id==="modal"){
+    document.getElementById("modal").style.display="none";
+  }
 }
 </script>
 
