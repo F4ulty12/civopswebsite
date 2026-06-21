@@ -71,14 +71,14 @@ nav a:hover {
   padding: 0 20px;
 }
 
-/* SIDE COLUMNS (FIXED ALIGNMENT) */
+/* SIDE IMAGES */
 .side {
-  display: grid;
-  grid-template-rows: auto 1fr auto; /* top / spacer / bottom */
+  display: flex;
+  flex-direction: column;
   gap: 18px;
 }
 
-/* images */
+/* ALL SIDE IMAGES */
 .side img {
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -94,9 +94,10 @@ nav a:hover {
   box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
-/* spacer */
-.spacer {
-  display: block;
+/* DIVIDER IMAGE */
+.divider {
+  aspect-ratio: 16 / 6;
+  opacity: 0.9;
 }
 
 /* CENTER CONTENT */
@@ -199,6 +200,15 @@ footer a:hover {
   border-radius: 12px;
 }
 
+.modal .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
   .page {
@@ -206,11 +216,16 @@ footer a:hover {
   }
 
   .side {
-    grid-template-rows: auto auto;
+    flex-direction: row;
+    overflow-x: auto;
   }
 
-  .spacer {
-    display: none;
+  .side img {
+    min-width: 260px;
+  }
+
+  .divider {
+    min-width: 260px;
   }
 }
 </style>
@@ -239,7 +254,7 @@ footer a:hover {
   <!-- LEFT -->
   <div class="side">
     <img src="image1.png" onclick="openModal(this.src)">
-    <div class="spacer"></div>
+    <img src="image.png" class="divider" onclick="openModal(this.src)">
     <img src="image2.png" onclick="openModal(this.src)">
   </div>
 
@@ -270,7 +285,7 @@ footer a:hover {
       </ul>
     </div>
 
-    <div class="card" id="get-involved">
+    <div class="card">
       <div class="section-title">🤝 Get Involved</div>
       <p>
         Join Civ Ops by participating in events, running businesses, or contacting leadership through community channels.
@@ -282,7 +297,7 @@ footer a:hover {
   <!-- RIGHT -->
   <div class="side">
     <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
-    <div class="spacer"></div>
+    <img src="image.png" class="divider" onclick="openModal(this.src)">
     <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
   </div>
 
@@ -320,17 +335,18 @@ footer a:hover {
 </div>
 
 <script>
-function openModal(src){
-  document.getElementById("modal").style.display="flex";
-  document.getElementById("modalImg").src=src;
+function openModal(src) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modalImg").src = src;
 }
 
-function closeModal(e){
-  if(e.target.id==="modal"){
-    document.getElementById("modal").style.display="none";
+function closeModal(e) {
+  if (e.target.id === "modal" || e.target.className === "close") {
+    document.getElementById("modal").style.display = "none";
   }
 }
 </script>
 
 </body>
+</html>
 </html>
