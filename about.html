@@ -75,12 +75,15 @@ nav a:hover {
 .side {
   display: flex;
   flex-direction: column;
-  gap: 28px; /* space between images */
+  justify-content: space-between; /* pushes top & bottom apart */
+  height: calc(100vh - 180px); /* fills screen minus header/footer */
 }
 
+/* wider images */
 .side img {
-  width: 100%;
-  aspect-ratio: 16 / 10; /* keeps consistent shape */
+  width: 115%;            /* makes them wider than column */
+  margin-left: -7.5%;     /* centers the overflow so it looks balanced */
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: 14px;
   border: 1px solid #e5e7eb;
@@ -214,10 +217,12 @@ footer a:hover {
   .side {
     flex-direction: row;
     overflow-x: auto;
+    height: auto;
   }
 
   .side img {
-    min-width: 260px;
+    width: 260px;
+    margin-left: 0;
   }
 }
 </style>
