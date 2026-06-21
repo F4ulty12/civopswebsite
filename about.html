@@ -8,10 +8,8 @@
 <style>
 :root {
   --bg: #f4f6f8;
-  --card: #ffffff;
   --text: #111827;
   --muted: #4b5563;
-  --border: #e5e7eb;
 }
 
 body {
@@ -38,30 +36,9 @@ header {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  object-fit: cover;
 }
 
-nav {
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-nav a {
-  color: #cbd5e1;
-  text-decoration: none;
-  font-size: 14px;
-  padding: 6px 8px;
-  border-radius: 6px;
-}
-
-nav a:hover {
-  background: rgba(255,255,255,0.1);
-  color: white;
-}
-
-/* MAIN LAYOUT */
+/* MAIN GRID */
 .page {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -71,27 +48,25 @@ nav a:hover {
   padding: 0 20px;
 }
 
-/* SIDE IMAGES (FIXED) */
+/* LEFT SIDE */
 .side {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-/* cleaner + wider but aligned */
 .side img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: 14px;
-  border: 1px solid #e5e7eb;
   cursor: pointer;
-  transition: 0.25s;
+  transition: 0.2s;
+  border: 1px solid #e5e7eb;
 }
 
 .side img:hover {
   transform: scale(1.03);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
 /* CENTER */
@@ -101,46 +76,52 @@ nav a:hover {
   gap: 14px;
 }
 
-.hero {
+.hero, .card {
   background: white;
-  border: 1px solid #e5e7eb;
   border-radius: 14px;
-  padding: 24px;
+  padding: 18px;
+  border: 1px solid #e5e7eb;
 }
 
 .hero h1 {
   margin: 0 0 10px 0;
-  font-size: 20px;
 }
 
-.hero p {
-  margin: 0;
-  color: #4b5563;
-  line-height: 1.7;
+/* RIGHT SIDE (ALIGNED SYSTEM) */
+.right {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* top / spacer / bottom */
+  gap: 18px;
 }
 
-.card {
-  background: white;
-  border: 1px solid #e5e7eb;
+/* top image */
+.right img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
   border-radius: 14px;
-  padding: 18px;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
 }
 
-.section-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 10px;
+/* spacer keeps alignment with middle cards */
+.right .spacer {
+  display: flex;
 }
 
-.card p, .card li {
-  color: #4b5563;
-  line-height: 1.7;
-  font-size: 14px;
+/* bottom image aligned with "Get Involved" */
+.right-bottom {
+  display: flex;
+  align-items: flex-end;
 }
 
-ul {
-  margin: 0;
-  padding-left: 18px;
+.right-bottom img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 14px;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
 }
 
 /* FOOTER */
@@ -162,15 +143,14 @@ footer {
 footer h3 {
   color: white;
   font-size: 14px;
-  margin-bottom: 10px;
 }
 
 footer a {
   display: block;
   color: #94a3b8;
-  text-decoration: none;
   font-size: 13px;
-  margin-bottom: 6px;
+  margin-top: 6px;
+  text-decoration: none;
 }
 
 footer a:hover {
@@ -194,28 +174,14 @@ footer a:hover {
   border-radius: 12px;
 }
 
-.modal .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 32px;
-  color: white;
-  cursor: pointer;
-}
-
 /* MOBILE */
 @media (max-width: 900px) {
   .page {
     grid-template-columns: 1fr;
   }
 
-  .side {
-    flex-direction: row;
-    overflow-x: auto;
-  }
-
-  .side img {
-    min-width: 260px;
+  .right {
+    grid-template-rows: auto auto;
   }
 }
 </style>
@@ -228,15 +194,6 @@ footer a:hover {
     <img src="loho.png" class="logo">
     <h2>Civilian Operations</h2>
   </div>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="cabinet.html">Board of Governors</a>
-    <a href="businesses.html">Businesses</a>
-    <a href="licensing.html">Licensing</a>
-    <a href="documents.html">Documents</a>
-  </nav>
 </header>
 
 <div class="page">
@@ -252,41 +209,45 @@ footer a:hover {
 
     <div class="hero">
       <h1>🏙 Civilian Operations Department</h1>
-      <p>
-        Welcome to Civ Ops. We manage civilian roleplay across Kentucky State Roleplay, ensuring realism, structure, and immersion.
-      </p>
+      <p>We manage civilian roleplay across KSRP.</p>
     </div>
 
     <div class="card">
-      <div class="section-title">❓ What is Civ Ops?</div>
-      <p>
-        Civilian Operations oversees all civilian RP within KSRP and forms the foundation of the server’s world and economy.
-      </p>
+      <h3>What is Civ Ops?</h3>
+      <p>Oversees civilian RP and economy systems within the server.</p>
     </div>
 
     <div class="card">
-      <div class="section-title">📋 Responsibilities</div>
+      <h3>Responsibilities</h3>
       <ul>
-        <li>Create civilian roleplay scenarios</li>
-        <li>Manage businesses and economy systems</li>
-        <li>Maintain realism and fairness</li>
-        <li>Support all roleplay departments</li>
+        <li>Roleplay scenarios</li>
+        <li>Businesses management</li>
+        <li>Economic balance</li>
+        <li>Server immersion</li>
       </ul>
     </div>
 
-    <div class="card">
-      <div class="section-title">🤝 Get Involved</div>
-      <p>
-        Join Civ Ops by participating in events, running businesses, or contacting leadership through community channels.
-      </p>
+    <div class="card" id="get-involved">
+      <h3>Get Involved</h3>
+      <p>Join events, operate businesses, and participate in Civ Ops RP.</p>
     </div>
 
   </div>
 
-  <!-- RIGHT -->
-  <div class="side">
+  <!-- RIGHT (ALIGNED WITH GET INVOLVED) -->
+  <div class="right">
+
+    <!-- top image -->
     <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
-    <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
+
+    <!-- spacer keeps alignment with middle cards -->
+    <div class="spacer"></div>
+
+    <!-- bottom image aligned with Get Involved -->
+    <div class="right-bottom">
+      <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
+    </div>
+
   </div>
 
 </div>
@@ -295,44 +256,30 @@ footer a:hover {
   <div class="footer-grid">
 
     <div>
-      <h3>🏛 Civ Ops</h3>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="cabinet.html">Board of Governors</a>
-      <a href="documents.html">Documents</a>
+      <h3>Civ Ops</h3>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Board of Governors</a>
     </div>
 
     <div>
-      <h3>📚 Resources</h3>
-      <a href="#">Economic Guidelines</a>
-      <a href="#">Rules & Regulations</a>
-    </div>
-
-    <div>
-      <h3>🌐 Community</h3>
-      <a href="#">Civ Ops Group</a>
-      <a href="#">KSRP Group</a>
+      <h3>Resources</h3>
+      <a href="#">Rules</a>
+      <a href="#">Economy</a>
     </div>
 
   </div>
 </footer>
 
 <!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModal(event)">
-  <span class="close">&times;</span>
+<div class="modal" id="modal" onclick="this.style.display='none'">
   <img id="modalImg">
 </div>
 
 <script>
-function openModal(src) {
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("modalImg").src = src;
-}
-
-function closeModal(e) {
-  if (e.target.id === "modal" || e.target.className === "close") {
-    document.getElementById("modal").style.display = "none";
-  }
+function openModal(src){
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("modalImg").src=src;
 }
 </script>
 
