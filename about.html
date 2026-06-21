@@ -49,7 +49,6 @@ nav a:hover {
   max-width: 900px;
   margin: 30px auto;
   padding: 0 20px;
-
   flex: 1;
 }
 
@@ -75,6 +74,32 @@ nav a:hover {
 ul {
   padding-left: 18px;
   margin: 0;
+}
+
+/* HEADER INFO BLOCK */
+.hero {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  background: #f9fafb;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.hero p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.section-title {
+  font-size: 15px;
+  margin-bottom: 10px;
 }
 
 /* FOOTER */
@@ -111,15 +136,6 @@ ul {
   color: white;
   text-decoration: underline;
 }
-
-.footer-bottom {
-  max-width: 1000px;
-  margin: 25px auto 0 auto;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  font-size: 12px;
-  color: #9ca3af;
-}
 </style>
 </head>
 
@@ -139,26 +155,48 @@ ul {
 
 <div class="container">
 
-  <div class="card">
-    <h2>What is Civ Ops?</h2>
+  <!-- HERO INTRO -->
+  <div class="hero">
+    <h1>:CO: | Civilian Operations</h1>
     <p>
-      Civilian Operations oversees all civilian roleplay within Kentucky State Roleplay and serves as the foundation of RP.
+      Welcome to the KSRP Civilian Operations Department (Civ Ops). This is where you, the community, bring life to the state of Kentucky.
+      Civ Ops ensures realistic, enjoyable roleplay while balancing fairness, creativity, and immersion for everyone.
     </p>
   </div>
 
+  <!-- WHAT IS CIV OPS -->
   <div class="card">
-    <h2>Responsibilities</h2>
+    <div class="section-title">:Question_mark1: | What is Civ Ops?</div>
+    <p>
+      Civilian Operations oversees all civilian roleplay within Kentucky State Roleplay.
+      Civ Ops is the foundation of RP — without civilians, there’s no story.
+    </p>
+  </div>
+
+  <!-- RESPONSIBILITIES -->
+  <div class="card">
+    <div class="section-title">:clipboard: | Responsibilities of Civ Ops</div>
     <ul>
-      <li>Create civilian scenarios</li>
-      <li>Manage businesses</li>
-      <li>Follow rules and laws</li>
-      <li>Support immersive interactions</li>
+      <li>Creating and maintaining civilian roleplay scenarios</li>
+      <li>Operating and managing civilian-owned businesses</li>
+      <li>Following KSRP server rules and state laws</li>
+      <li>Providing creative, realistic interactions for LEO, Fire/EMS, and other civilians</li>
+      <li>Ensuring civilian RP is fair, balanced, and immersive</li>
     </ul>
+  </div>
+
+  <!-- GET INVOLVED -->
+  <div class="card">
+    <div class="section-title">:handshake: | Get Involved</div>
+    <p>
+      Interested in running a business, planning events, or helping Civ Ops grow?
+      Reach out through a Community Ticket or speak with a Civ Ops Director.
+    </p>
   </div>
 
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER (no copyright) -->
 <footer class="footer">
 
   <div class="footer-container">
@@ -183,10 +221,6 @@ ul {
       <a href="https://www.roblox.com/groups/34226366/Kentucky-State-RP-ERLC#!/about" target="_blank">KSRP Group</a>
     </div>
 
-  </div>
-
-  <div class="footer-bottom">
-    © Civilian Operations • Kentucky State Roleplay
   </div>
 
 </footer>
