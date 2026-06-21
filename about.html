@@ -12,7 +12,6 @@
   --text: #111827;
   --muted: #4b5563;
   --border: #e5e7eb;
-  --primary: #111827;
 }
 
 html, body {
@@ -32,9 +31,26 @@ body {
 
 /* HEADER */
 header {
-  background: var(--primary);
+  background: #111827;
   color: white;
-  padding: 18px 24px;
+  padding: 14px 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 header h2 {
@@ -44,7 +60,6 @@ header h2 {
 }
 
 nav {
-  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -64,7 +79,7 @@ nav a:hover {
   color: white;
 }
 
-/* PAGE WRAP */
+/* MAIN */
 .container {
   flex: 1;
   max-width: 1000px;
@@ -102,7 +117,6 @@ nav a:hover {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 14px;
 
-  /* THIS fills empty space nicely */
   flex: 1;
   align-content: start;
 }
@@ -179,7 +193,11 @@ footer a:hover {
 <body>
 
 <header>
-  <h2>🏛️ Civilian Operations</h2>
+  <div class="header-left">
+    <img src="loho.png" alt="Civ Ops Logo" class="logo">
+    <h2>Civilian Operations</h2>
+  </div>
+
   <nav>
     <a href="index.html">🏠 Home</a>
     <a href="about.html">ℹ️ About</a>
@@ -206,7 +224,8 @@ footer a:hover {
     <div class="card">
       <div class="section-title">❓ What is Civ Ops?</div>
       <p>
-        Civilian Operations oversees all civilian roleplay within Kentucky State Roleplay. Without civilians, there is no story or world activity.
+        Civilian Operations oversees all civilian roleplay within Kentucky State Roleplay.
+        Without civilians, there is no story or world activity.
       </p>
     </div>
 
