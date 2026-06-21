@@ -49,11 +49,18 @@ header {
 }
 
 /* LEFT SIDE */
-.side {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
+<div class="side">
+
+  <!-- top image -->
+  <img src="image1.png" onclick="openModal(this.src)">
+
+  <!-- spacer to match middle cards -->
+  <div class="spacer"></div>
+
+  <!-- bottom image aligned with "Get Involved" -->
+  <img src="image2.png" onclick="openModal(this.src)">
+
+</div>
 
 .side img {
   width: 100%;
