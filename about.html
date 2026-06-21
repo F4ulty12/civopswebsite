@@ -6,11 +6,20 @@
 <title>About | Civilian Operations</title>
 
 <style>
+:root {
+  --bg: #f3f4f6;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #4b5563;
+  --border: #e5e7eb;
+  --primary: #111827;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #ffffff;
-  color: #111827;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 
   display: flex;
   flex-direction: column;
@@ -19,24 +28,27 @@ body {
 
 /* HEADER */
 header {
-  background: #111827;
+  background: var(--primary);
   color: white;
-  padding: 14px 24px;
+  padding: 16px 24px;
 }
 
 header h2 {
   margin: 0;
   font-size: 18px;
+  font-weight: 600;
 }
 
 nav {
-  margin-top: 6px;
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 nav a {
   color: #cbd5e1;
   text-decoration: none;
-  margin-right: 10px;
   font-size: 14px;
 }
 
@@ -52,62 +64,58 @@ nav a:hover {
   flex: 1;
 }
 
-.card {
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 18px;
+/* HERO */
+.hero {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
   margin-bottom: 16px;
-  background: #fff;
 }
 
-.card h2 {
-  margin-top: 0;
-  font-size: 16px;
+.hero h1 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* CARDS */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .card p, .card li {
-  color: #4b5563;
+  color: var(--muted);
   line-height: 1.7;
   font-size: 14px;
 }
 
 ul {
+  margin: 0;
   padding-left: 18px;
-  margin: 0;
-}
-
-/* HEADER INFO BLOCK */
-.hero {
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 20px;
-  background: #f9fafb;
-  margin-bottom: 16px;
-}
-
-.hero h1 {
-  margin: 0 0 10px 0;
-  font-size: 18px;
-}
-
-.hero p {
-  margin: 0;
-  color: #4b5563;
-  line-height: 1.6;
-  font-size: 14px;
-}
-
-.section-title {
-  font-size: 15px;
-  margin-bottom: 10px;
 }
 
 /* FOOTER */
 .footer {
-  background: #1f2937;
-  color: #cbd5e1;
+  background: #111827;
+  color: #9ca3af;
   margin-top: auto;
-  padding: 40px 20px 20px 20px;
+  padding: 40px 20px;
 }
 
 .footer-container {
@@ -122,6 +130,7 @@ ul {
   color: white;
   font-size: 14px;
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .footer-column a {
@@ -134,7 +143,6 @@ ul {
 
 .footer-column a:hover {
   color: white;
-  text-decoration: underline;
 }
 </style>
 </head>
@@ -142,7 +150,7 @@ ul {
 <body>
 
 <header>
-  <h2>🏛️ Civilian Operations</h2>
+  <h2>🏛 Civilian Operations</h2>
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -155,54 +163,53 @@ ul {
 
 <div class="container">
 
-  <!-- HERO INTRO -->
+  <!-- HERO -->
   <div class="hero">
-    <h1>:CO: | Civilian Operations</h1>
+    <h1>Civilian Operations Department</h1>
     <p>
-      Welcome to the KSRP Civilian Operations Department (Civ Ops). This is where you, the community, bring life to the state of Kentucky.
-      Civ Ops ensures realistic, enjoyable roleplay while balancing fairness, creativity, and immersion for everyone.
+      Welcome to the KSRP Civilian Operations Department. Civ Ops brings the community to life by creating structured,
+      realistic, and immersive civilian roleplay across the state of Kentucky.
     </p>
   </div>
 
   <!-- WHAT IS CIV OPS -->
   <div class="card">
-    <div class="section-title">:Question_mark1: | What is Civ Ops?</div>
+    <div class="section-title">What is Civilian Operations?</div>
     <p>
       Civilian Operations oversees all civilian roleplay within Kentucky State Roleplay.
-      Civ Ops is the foundation of RP — without civilians, there’s no story.
+      It is the foundation of roleplay — without civilians, there is no story or world activity.
     </p>
   </div>
 
   <!-- RESPONSIBILITIES -->
   <div class="card">
-    <div class="section-title">:clipboard: | Responsibilities of Civ Ops</div>
+    <div class="section-title">Responsibilities</div>
     <ul>
-      <li>Creating and maintaining civilian roleplay scenarios</li>
-      <li>Operating and managing civilian-owned businesses</li>
-      <li>Following KSRP server rules and state laws</li>
-      <li>Providing creative, realistic interactions for LEO, Fire/EMS, and other civilians</li>
-      <li>Ensuring civilian RP is fair, balanced, and immersive</li>
+      <li>Creating and managing civilian roleplay scenarios</li>
+      <li>Operating and maintaining civilian businesses</li>
+      <li>Enforcing realism through state laws and server rules</li>
+      <li>Supporting interaction with LEO, Fire, EMS, and civilians</li>
+      <li>Maintaining fair and immersive roleplay environments</li>
     </ul>
   </div>
 
   <!-- GET INVOLVED -->
   <div class="card">
-    <div class="section-title">:handshake: | Get Involved</div>
+    <div class="section-title">Get Involved</div>
     <p>
-      Interested in running a business, planning events, or helping Civ Ops grow?
-      Reach out through a Community Ticket or speak with a Civ Ops Director.
+      Interested in running a business, hosting events, or contributing to Civ Ops?
+      Contact a Civ Ops Director or open a community support ticket.
     </p>
   </div>
 
 </div>
 
-<!-- FOOTER (no copyright) -->
+<!-- FOOTER -->
 <footer class="footer">
-
   <div class="footer-container">
 
     <div class="footer-column">
-      <h3>🏛️ Civ Ops</h3>
+      <h3>Civ Ops</h3>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="cabinet.html">Board of Governors</a>
@@ -210,19 +217,18 @@ ul {
     </div>
 
     <div class="footer-column">
-      <h3>📜 Resources</h3>
+      <h3>Resources</h3>
       <a href="https://docs.google.com/document/d/1YK7AHLKnuTsTiLnHeO7Ybr0RB37CluGGmw-sU-4mFeI/edit?usp=sharing" target="_blank">Economic Guidelines</a>
       <a href="https://docs.google.com/document/d/1Xyz_473by6sskYHBkjv5-yyr0QlATa8WGaIO-xJFGZ4/edit?usp=sharing" target="_blank">Rules & Regulations</a>
     </div>
 
     <div class="footer-column">
-      <h3>🌐 Community</h3>
+      <h3>Community</h3>
       <a href="https://www.roblox.com/share/g/620380444" target="_blank">Civ Ops Group</a>
       <a href="https://www.roblox.com/groups/34226366/Kentucky-State-RP-ERLC#!/about" target="_blank">KSRP Group</a>
     </div>
 
   </div>
-
 </footer>
 
 </body>
