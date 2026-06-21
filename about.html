@@ -71,23 +71,18 @@ nav a:hover {
   padding: 0 20px;
 }
 
-/* SIDE COLUMN (CENTERED FIX) */
+/* SIDE COLUMNS */
 .side {
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* KEY FIX: vertical centering */
+  justify-content: center;
   gap: 18px;
 }
 
-/* grouping container */
-.side-group {
-  display: flex;
-  flex-direction: column;
-}
-
-/* SIDE IMAGES */
+/* ALL SIDE IMAGES (SAME WIDTH) */
 .side img {
   width: 100%;
+  height: 170px; /* makes all side images consistent */
   object-fit: cover;
   border-radius: 14px;
   border: 1px solid #e5e7eb;
@@ -100,13 +95,15 @@ nav a:hover {
   box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
-/* DIVIDER (NOW PROPERLY HORIZONTAL + THIN) */
+/* DIVIDER (NOT CLICKABLE + VISUAL ONLY) */
 .divider {
+  height: 18px;
   width: 100%;
-  height: 16px;     /* thin separator */
   object-fit: cover;
-  border-radius: 10px;
-  opacity: 0.85;
+  border-radius: 8px;
+  opacity: 0.7;
+  pointer-events: none; /* prevents fullscreen click */
+  cursor: default;
 }
 
 /* CENTER CONTENT */
@@ -216,7 +213,7 @@ footer a:hover {
   }
 
   .side {
-    justify-content: flex-start;
+    flex-direction: column;
   }
 }
 </style>
@@ -244,17 +241,9 @@ footer a:hover {
 
   <!-- LEFT -->
   <div class="side">
-
-    <div class="side-group">
-      <img src="image1.png" onclick="openModal(this.src)">
-    </div>
-
-    <img src="image.png" class="divider" onclick="openModal(this.src)">
-
-    <div class="side-group">
-      <img src="image2.png" onclick="openModal(this.src)">
-    </div>
-
+    <img src="image1.png" onclick="openModal(this.src)">
+    <img src="image.png" class="divider">
+    <img src="image2.png" onclick="openModal(this.src)">
   </div>
 
   <!-- CENTER -->
@@ -295,17 +284,9 @@ footer a:hover {
 
   <!-- RIGHT -->
   <div class="side">
-
-    <div class="side-group">
-      <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
-    </div>
-
-    <img src="image.png" class="divider" onclick="openModal(this.src)">
-
-    <div class="side-group">
-      <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
-    </div>
-
+    <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
+    <img src="image.png" class="divider">
+    <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
   </div>
 
 </div>
