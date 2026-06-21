@@ -9,7 +9,6 @@
 :root {
   --bg: #f4f6f8;
   --text: #111827;
-  --muted: #4b5563;
 }
 
 body {
@@ -26,19 +25,7 @@ header {
   padding: 14px 24px;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-}
-
-/* MAIN GRID */
+/* MAIN LAYOUT */
 .page {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -48,32 +35,31 @@ header {
   padding: 0 20px;
 }
 
-/* LEFT SIDE */
-<div class="side">
+/* SIDE COLUMNS (BOTH SIDES NOW MATCH) */
+.side {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* top / spacer / bottom */
+  gap: 18px;
+}
 
-  <!-- top image -->
-  <img src="image1.png" onclick="openModal(this.src)">
-
-  <!-- spacer to match middle cards -->
-  <div class="spacer"></div>
-
-  <!-- bottom image aligned with "Get Involved" -->
-  <img src="image2.png" onclick="openModal(this.src)">
-
-</div>
-
+/* images */
 .side img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: 14px;
   cursor: pointer;
-  transition: 0.2s;
   border: 1px solid #e5e7eb;
+  transition: 0.2s;
 }
 
 .side img:hover {
   transform: scale(1.03);
+}
+
+/* spacer row */
+.spacer {
+  display: block;
 }
 
 /* CENTER */
@@ -90,78 +76,12 @@ header {
   border: 1px solid #e5e7eb;
 }
 
-.hero h1 {
-  margin: 0 0 10px 0;
-}
-
-/* RIGHT SIDE (ALIGNED SYSTEM) */
-.right {
-  display: grid;
-  grid-template-rows: auto 1fr auto; /* top / spacer / bottom */
-  gap: 18px;
-}
-
-/* top image */
-.right img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: 14px;
-  cursor: pointer;
-  border: 1px solid #e5e7eb;
-}
-
-/* spacer keeps alignment with middle cards */
-.right .spacer {
-  display: flex;
-}
-
-/* bottom image aligned with "Get Involved" */
-.right-bottom {
-  display: flex;
-  align-items: flex-end;
-}
-
-.right-bottom img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: 14px;
-  cursor: pointer;
-  border: 1px solid #e5e7eb;
-}
-
 /* FOOTER */
 footer {
   background: #0f172a;
   color: #94a3b8;
   padding: 40px 20px;
   margin-top: 40px;
-}
-
-.footer-grid {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
-}
-
-footer h3 {
-  color: white;
-  font-size: 14px;
-}
-
-footer a {
-  display: block;
-  color: #94a3b8;
-  font-size: 13px;
-  margin-top: 6px;
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: white;
 }
 
 /* MODAL */
@@ -172,7 +92,6 @@ footer a:hover {
   background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  z-index: 999;
 }
 
 .modal img {
@@ -187,8 +106,12 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
 
-  .right {
+  .side {
     grid-template-rows: auto auto;
+  }
+
+  .spacer {
+    display: none;
   }
 }
 </style>
@@ -197,17 +120,15 @@ footer a:hover {
 <body>
 
 <header>
-  <div class="header-left">
-    <img src="loho.png" class="logo">
-    <h2>Civilian Operations</h2>
-  </div>
+  <h2 style="margin:0; padding:14px 24px;">Civilian Operations</h2>
 </header>
 
 <div class="page">
 
-  <!-- LEFT -->
+  <!-- LEFT (FIXED) -->
   <div class="side">
     <img src="image1.png" onclick="openModal(this.src)">
+    <div class="spacer"></div>
     <img src="image2.png" onclick="openModal(this.src)">
   </div>
 
@@ -215,67 +136,42 @@ footer a:hover {
   <div class="content">
 
     <div class="hero">
-      <h1>🏙 Civilian Operations Department</h1>
+      <h2>🏙 Civilian Operations</h2>
       <p>We manage civilian roleplay across KSRP.</p>
     </div>
 
     <div class="card">
       <h3>What is Civ Ops?</h3>
-      <p>Oversees civilian RP and economy systems within the server.</p>
+      <p>Oversees civilian RP and economy systems.</p>
     </div>
 
     <div class="card">
       <h3>Responsibilities</h3>
       <ul>
         <li>Roleplay scenarios</li>
-        <li>Businesses management</li>
-        <li>Economic balance</li>
-        <li>Server immersion</li>
+        <li>Businesses</li>
+        <li>Economy balance</li>
       </ul>
     </div>
 
     <div class="card" id="get-involved">
       <h3>Get Involved</h3>
-      <p>Join events, operate businesses, and participate in Civ Ops RP.</p>
+      <p>Join Civ Ops events and RP activities.</p>
     </div>
 
   </div>
 
-  <!-- RIGHT (ALIGNED WITH GET INVOLVED) -->
-  <div class="right">
-
-    <!-- top image -->
+  <!-- RIGHT (FIXED) -->
+  <div class="side">
     <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
-
-    <!-- spacer keeps alignment with middle cards -->
     <div class="spacer"></div>
-
-    <!-- bottom image aligned with Get Involved -->
-    <div class="right-bottom">
-      <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
-    </div>
-
+    <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
   </div>
 
 </div>
 
 <footer>
-  <div class="footer-grid">
-
-    <div>
-      <h3>Civ Ops</h3>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Board of Governors</a>
-    </div>
-
-    <div>
-      <h3>Resources</h3>
-      <a href="#">Rules</a>
-      <a href="#">Economy</a>
-    </div>
-
-  </div>
+  <div style="text-align:center;">Civ Ops Footer</div>
 </footer>
 
 <!-- MODAL -->
