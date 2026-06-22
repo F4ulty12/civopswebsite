@@ -20,6 +20,7 @@ html, body {
 
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -385,10 +386,12 @@ footer a:hover {
 </div>
 
 <!-- PROFILE MODAL -->
-<div class="profile-box">
-  <h2 id="profileTitle"></h2>
-  <div id="profileSubtitle" style="font-size:13px;color:#6b7280;margin-bottom:10px;"></div>
-  <p id="profileAbout"></p>
+<div class="profile-modal" id="profileModal" onclick="closeProfile(event)">
+  <div class="profile-box">
+    <h2 id="profileTitle"></h2>
+    <div id="profileSubtitle" style="font-size:13px;color:#6b7280;margin-bottom:10px;"></div>
+    <p id="profileAbout"></p>
+  </div>
 </div>
 
 <script>
