@@ -1,16 +1,349 @@
-<html><head><title>Civilian Operations</title><link rel="stylesheet" href="style.css"></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Civilian Operations</title>
+
+<style>
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #4b5563;
+  --border: #e5e7eb;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* HEADER */
+header {
+  background: #111827;
+  color: white;
+  padding: 16px 24px;
+}
+
+header h2 {
+  margin: 0;
+}
+
+nav {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* MAIN GRID */
+.page {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr 1fr;
+  gap: 18px;
+  max-width: 1400px;
+  margin: 30px auto;
+  padding: 0 20px;
+  align-items: start;
+}
+
+/* SIDE COLUMNS */
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.side img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.side img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+/* divider image */
+.divider {
+  height: 18px;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  border-radius: 6px;
+}
+
+/* CENTER */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* HERO (unique style) */
+.hero {
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 26px;
+}
+
+.hero p {
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  margin-top: 14px;
+  margin-right: 8px;
+  padding: 9px 14px;
+  background: white;
+  color: #111827;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #e5e7eb;
+}
+
+/* CARDS GRID */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.card h3 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  background: #0f172a;
+  color: #94a3b8;
+  padding: 40px 20px;
+  margin-top: 40px;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+footer h3 {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+footer a {
+  display: block;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+footer a:hover {
+  color: white;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
 <header>
-<h2>Civilian Operations</h2>
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="cabinet.html">Executive Cabinet</a>
-<a href="businesses.html">Businesses</a>
-<a href="licensing.html">Licensing</a>
-<a href="documents.html">Documents</a>
-</nav>
+  <h2>Civilian Operations</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="cabinet.html">Executive Cabinet</a>
+    <a href="businesses.html">Businesses</a>
+    <a href="licensing.html">Licensing</a>
+    <a href="documents.html">Documents</a>
+  </nav>
 </header>
 
-<div class="container"><div class="hero"><h1>Civilian Operations</h1><p>Building immersive civilian roleplay across Kentucky State Roleplay.</p>
-<p><a class="btn" href="documents.html">Applications</a><a class="btn" href="https://www.roblox.com/share/g/620380444">Roblox Group</a></p></div></div>
-<footer>KSRP Civilian Operations</footer></body></html>
+<div class="page">
+
+  <!-- LEFT SIDE -->
+  <div class="side">
+    <img src="image1.png" onclick="openModal(this.src)">
+    <img src="image2.png" onclick="openModal(this.src)">
+    <img class="divider" src="9xw23x9.png">
+  </div>
+
+  <!-- CENTER -->
+  <div class="content">
+
+    <div class="hero">
+      <h1>🏙 Civilian Operations</h1>
+      <p>
+        The backbone of civilian roleplay in Kentucky State Roleplay.
+        We create structured systems, realistic economies, and immersive experiences.
+      </p>
+
+      <a class="btn" href="documents.html">Applications</a>
+      <a class="btn" href="https://www.roblox.com/share/g/620380444">Roblox Group</a>
+    </div>
+
+    <div class="quick-grid">
+
+      <div class="card">
+        <h3>📄 Applications</h3>
+        <p>Join Civ Ops roles, businesses, and departments.</p>
+      </div>
+
+      <div class="card">
+        <h3>🏢 Economy</h3>
+        <p>Structured systems for business and roleplay balance.</p>
+      </div>
+
+      <div class="card">
+        <h3>📜 Rules</h3>
+        <p>Guidelines ensuring fair and realistic RP.</p>
+      </div>
+
+      <div class="card">
+        <h3>🌐 Community</h3>
+        <p>Participate in events and civilian life systems.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="side">
+    <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
+    <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
+    <img class="divider" src="9xw23x9.png">
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <h3>🏛 Civ Ops</h3>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="cabinet.html">Executive Cabinet</a>
+      <a href="documents.html">Documents</a>
+    </div>
+
+    <div>
+      <h3>📚 Resources</h3>
+      <a href="documents.html">Applications</a>
+      <a href="#">Rules & Regulations</a>
+      <a href="#">Economic System</a>
+    </div>
+
+    <div>
+      <h3>🌐 Community</h3>
+      <a href="https://www.roblox.com/share/g/620380444">Roblox Group</a>
+      <a href="#">Discord Server</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <img id="modalImg">
+</div>
+
+<script>
+function openModal(src) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal(e) {
+  if (e.target.id === "modal") {
+    document.getElementById("modal").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
