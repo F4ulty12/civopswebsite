@@ -13,15 +13,21 @@
   --border: #e5e7eb;
 }
 
-/* EXACT ABOUT-PAGE STYLE SPACING BASE */
+/* FULL HEIGHT FIX (forces footer bottom) */
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
+  display: flex;
+  flex-direction: column;
 }
 
-/* HEADER (kept identical structure style) */
+/* HEADER */
 header {
   background: #111827;
   color: white;
@@ -60,22 +66,28 @@ nav a:hover {
   color: white;
 }
 
-/* MAIN GRID — MATCH ABOUT PAGE SPACING */
+/* MAIN WRAPPER (push footer down) */
+.wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* GRID (ABOUT PAGE SPACING) */
 .page {
   display: grid;
   grid-template-columns: 1fr 2.2fr 1fr;
-  gap: 18px; /* EXACT same spacing rule */
+  gap: 18px;
   max-width: 1400px;
-  margin: 30px auto;
-  padding: 0 20px;
-  align-items: start;
+  width: 100%;
+  padding: 30px 20px;
 }
 
-/* SIDE COLUMNS (same spacing rhythm) */
+/* SIDE COLUMNS */
 .side {
   display: flex;
   flex-direction: column;
-  gap: 18px; /* SAME AS ABOUT */
+  gap: 18px;
 }
 
 /* IMAGES */
@@ -93,11 +105,10 @@ nav a:hover {
   transform: scale(1.04);
 }
 
-/* DIVIDER — EXACT ABOUT PAGE BEHAVIOR */
+/* DIVIDER (EXACT ABOUT STYLE) */
 .divider {
   width: 100%;
   height: 20px;
-  max-height: 20px;
   object-fit: cover;
   opacity: 0.6;
   border-radius: 6px;
@@ -116,7 +127,7 @@ nav a:hover {
   background: linear-gradient(135deg, #111827, #1f2937);
   color: white;
   border-radius: 16px;
-  padding: 24px; /* matched tighter About spacing feel */
+  padding: 26px;
 }
 
 .hero h1 {
@@ -144,7 +155,7 @@ nav a:hover {
   font-weight: bold;
 }
 
-/* CARDS */
+/* INFO CARDS */
 .card {
   background: white;
   border: 1px solid var(--border);
@@ -164,12 +175,38 @@ nav a:hover {
   line-height: 1.6;
 }
 
-/* FOOTER (sticky like before) */
+/* EXTRA HOME INFO SECTION */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.info-box {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.info-box h3 {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* FOOTER FIXED TO BOTTOM */
 footer {
   background: #0f172a;
   color: #94a3b8;
   padding: 40px 20px;
-  margin-top: auto;
+  margin-top: auto; /* KEY FIX */
 }
 
 .footer-grid {
@@ -220,6 +257,10 @@ footer a:hover {
   .page {
     grid-template-columns: 1fr;
   }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -242,9 +283,10 @@ footer a:hover {
   </nav>
 </header>
 
+<div class="wrapper">
 <div class="page">
 
-  <!-- LEFT SIDE (NEW RANDOMIZED IMAGES) -->
+  <!-- LEFT -->
   <div class="side">
     <img src="Screenshot_2026-04-08_001054.png" onclick="openModal(this.src)">
     <img class="divider" src="image.png">
@@ -257,27 +299,42 @@ footer a:hover {
     <div class="hero">
       <h1>🏙 Civilian Operations</h1>
       <p>
-        The core of civilian roleplay within KSRP, focusing on structured systems,
-        immersive economy, and realistic community interaction.
+        The civilian backbone of Kentucky State Roleplay.
+        We manage realism, economy systems, businesses, and immersive RP structure.
       </p>
 
       <a class="btn" href="documents.html">Applications</a>
       <a class="btn" href="https://www.roblox.com/share/g/620380444">Roblox Group</a>
     </div>
 
-    <div class="card">
-      <h3>📌 Mission</h3>
-      <p>Build and maintain immersive civilian systems for KSRP roleplay.</p>
-    </div>
+    <!-- NEW HOME CONTENT -->
+    <div class="info-grid">
 
-    <div class="card">
-      <h3>🏢 Focus</h3>
-      <p>Economy, realism, civilian structure, and interactive RP systems.</p>
+      <div class="info-box">
+        <h3>📌 What We Are</h3>
+        <p>A structured civilian department responsible for shaping all civilian RP systems.</p>
+      </div>
+
+      <div class="info-box">
+        <h3>🏢 Economy</h3>
+        <p>We maintain balanced business systems and realistic in-game economy flow.</p>
+      </div>
+
+      <div class="info-box">
+        <h3>🎭 Roleplay Focus</h3>
+        <p>We ensure immersive, realistic civilian interactions across KSRP.</p>
+      </div>
+
+      <div class="info-box">
+        <h3>🤝 Opportunities</h3>
+        <p>Players can join businesses, run roles, and participate in civilian systems.</p>
+      </div>
+
     </div>
 
   </div>
 
-  <!-- RIGHT SIDE (NEW RANDOMIZED IMAGES) -->
+  <!-- RIGHT -->
   <div class="side">
     <img src="MedalTVRoblox20260307193243532_-_Copy.png" onclick="openModal(this.src)">
     <img class="divider" src="image.png">
@@ -285,7 +342,9 @@ footer a:hover {
   </div>
 
 </div>
+</div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
 
