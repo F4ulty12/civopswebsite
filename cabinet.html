@@ -264,6 +264,11 @@ footer a:hover {
   line-height: 1.6;
 }
 
+  #profileSubtitle {
+  font-weight: 500;
+  opacity: 0.85;
+}
+  
 /* MOBILE */
 @media (max-width: 900px) {
   .page {
@@ -385,45 +390,36 @@ footer a:hover {
 </div>
 
 <!-- PROFILE MODAL -->
-<div class="profile-modal" id="profileModal" onclick="closeProfile(event)">
-  <div class="profile-box">
-    <h2 id="profileTitle"></h2>
-    <p id="profileAbout"></p>
-  </div>
+<div class="profile-box">
+  <h2 id="profileTitle"></h2>
+  <div id="profileSubtitle" style="font-size:13px;color:#6b7280;margin-bottom:10px;"></div>
+  <p id="profileAbout"></p>
 </div>
 
 <script>
     const profiles = {
   "Governor of Kentucky": {
     name: "F4ultyOfficial",
-    role: "Governor",
-    rank: "Executive Leadership",
-    about: `Former high-level scripter with 6+ years of Roblox development experience, specializing in gameplay systems, UI design, and backend architecture.
+    about: `Former professional scripter with 6+ years of Roblox development experience.
 
-Currently oversees Civilian Operations within KSRP, ensuring structure, realism, and policy enforcement across all civilian systems.
+Currently oversees Civilian Operations within KSRP, ensuring structure and realism.
 
-Focuses on leadership, organization, and maintaining a professional roleplay environment.`,
+Focuses on leadership, organization, and roleplay quality.`
   },
 
   "Lt. Governor": {
     name: "Stephen_1209",
-    role: "Lieutenant Governor",
-    rank: "Executive Leadership",
-    about: `None.`,
+    about: `None.`
   },
 
   "Executive Director": {
     name: "Itslixm_.",
-    role: "Director of Executive Cabinet",
-    rank: "Cabinet Administration",
-    about: `None.`,
+    about: `None.`
   },
 
   "Personnel Director": {
     name: "Herobrinexd2132",
-    role: "Director of Personnel Cabinet",
-    rank: "Human Resources",
-    about: `None.`,
+    about: `None.`
   }
 };
   
@@ -438,13 +434,16 @@ function closeImage(e) {
   }
 }
 
-function openProfile(name) {
+function openProfile(key) {
   document.getElementById("profileModal").style.display = "flex";
 
-  const profile = profiles[name];
+  const profile = profiles[key];
 
   document.getElementById("profileTitle").innerText =
-    profile ? profile.role : name;
+    profile ? key : key;
+
+  document.getElementById("profileSubtitle").innerText =
+    profile ? profile.name : "";
 
   document.getElementById("profileAbout").innerText =
     profile ? profile.about : "About: None";
