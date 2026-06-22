@@ -13,7 +13,6 @@
   --border: #e5e7eb;
 }
 
-/* FULL PAGE STRUCTURE (fixes footer issue) */
 html, body {
   height: 100%;
 }
@@ -66,14 +65,14 @@ nav a:hover {
   color: white;
 }
 
-/* MAIN WRAPPER (push footer down) */
+/* PUSH FOOTER DOWN */
 .wrapper {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-/* 3 COLUMN LAYOUT */
+/* GRID */
 .page {
   display: grid;
   grid-template-columns: 1fr 2.2fr 1fr;
@@ -81,7 +80,6 @@ nav a:hover {
   max-width: 1400px;
   width: 100%;
   padding: 30px 20px;
-  align-items: start;
 }
 
 /* SIDE COLUMNS */
@@ -91,32 +89,34 @@ nav a:hover {
   gap: 18px;
 }
 
-/* SIDE IMAGES */
-.side img {
+/* CLICKABLE IMAGES */
+.side img:not(.divider) {
   width: 100%;
   height: 165px;
   object-fit: cover;
   border-radius: 14px;
   border: 1px solid #e5e7eb;
   cursor: pointer;
-  transition: 0.25s;
+  transition: 0.25s ease;
 }
 
-.side img:hover {
+.side img:not(.divider):hover {
   transform: scale(1.04);
 }
 
-/* CENTER DIVIDER (IMPORTANT FIX) */
+/* DIVIDER (EXACT ABOUT PAGE HEIGHT) */
 .divider {
   width: 100%;
-  height: 18px;
+  height: 20px;
+  max-height: 20px;
   object-fit: cover;
   opacity: 0.6;
   border-radius: 6px;
   pointer-events: none;
+  cursor: default;
 }
 
-/* CENTER CONTENT */
+/* CENTER */
 .content {
   display: flex;
   flex-direction: column;
@@ -177,7 +177,7 @@ nav a:hover {
   line-height: 1.6;
 }
 
-/* FOOTER (NOW FIXED TO BOTTOM) */
+/* FOOTER FIXED TO BOTTOM */
 footer {
   background: #0f172a;
   color: #94a3b8;
@@ -211,6 +211,23 @@ footer a:hover {
   color: white;
 }
 
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
   .page {
@@ -241,10 +258,11 @@ footer a:hover {
 <div class="wrapper">
 <div class="page">
 
-  <!-- LEFT (2 IMAGES ONLY) -->
+  <!-- LEFT -->
   <div class="side">
-    <img src="image1.png">
-    <img src="image2.png">
+    <img src="image1.png" onclick="openModal(this.src)">
+    <img class="divider" src="image.png">
+    <img src="image2.png" onclick="openModal(this.src)">
   </div>
 
   <!-- CENTER -->
@@ -253,8 +271,8 @@ footer a:hover {
     <div class="hero">
       <h1>🏙 Civilian Operations</h1>
       <p>
-        The foundation of civilian roleplay in KSRP.
-        We build structured systems, immersive economy, and realistic roleplay environments.
+        The backbone of civilian roleplay in KSRP.
+        We create structured systems, immersive economy, and realistic roleplay environments.
       </p>
 
       <a class="btn" href="documents.html">Applications</a>
@@ -263,26 +281,27 @@ footer a:hover {
 
     <div class="card">
       <h3>📌 Mission</h3>
-      <p>To create structured and realistic civilian systems that drive immersion.</p>
+      <p>Building structured civilian systems for immersive roleplay.</p>
     </div>
 
     <div class="card">
       <h3>🏢 Focus</h3>
-      <p>Economy, businesses, civilian RP systems, and server-wide realism.</p>
+      <p>Economy, businesses, realism, and civilian interaction systems.</p>
     </div>
 
   </div>
 
-  <!-- RIGHT (DIVIDER BETWEEN IMAGES EXACTLY LIKE ABOUT PAGE STYLE) -->
+  <!-- RIGHT -->
   <div class="side">
-    <img src="MedalTVRoblox20260307200704891_-_Copy.png">
+    <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
     <img class="divider" src="image.png">
-    <img src="MedalTVRoblox20260307200735969_-_Copy.png">
+    <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
   </div>
 
 </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
 
@@ -309,6 +328,24 @@ footer a:hover {
 
   </div>
 </footer>
+
+<!-- MODAL (CLICK TO ENLARGE IMAGES ONLY) -->
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <img id="modalImg">
+</div>
+
+<script>
+function openModal(src) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal(e) {
+  if (e.target.id === "modal") {
+    document.getElementById("modal").style.display = "none";
+  }
+}
+</script>
 
 </body>
 </html>
