@@ -47,6 +47,7 @@ header img {
   border-radius: 8px;
 }
 
+/* NAV */
 nav {
   margin-top: 10px;
   display: flex;
@@ -67,14 +68,14 @@ nav a:hover {
   color: white;
 }
 
-/* MAIN WRAPPER (push footer down) */
+/* MAIN WRAPPER */
 .wrapper {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-/* GRID (ABOUT PAGE SPACING) */
+/* GRID */
 .page {
   display: grid;
   grid-template-columns: 1fr 2.2fr 1fr;
@@ -84,7 +85,7 @@ nav a:hover {
   padding: 30px 20px;
 }
 
-/* SIDE COLUMNS */
+/* SIDE */
 .side {
   display: flex;
   flex-direction: column;
@@ -106,16 +107,25 @@ nav a:hover {
   transform: scale(1.04);
 }
 
-/* DIVIDER (EXACT ABOUT STYLE) */
+/* ✅ FIXED DIVIDER (STANDARDIZED) */
 .divider {
   width: 100%;
   height: 20px;
   max-height: 20px;
   object-fit: cover;
   display: block;
-  overflow: hidden;
   margin: 6px 0;
   opacity: 0.6;
+
+  border-radius: 10px;
+  transition: 0.25s ease;
+  cursor: default;
+}
+
+.divider:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  opacity: 0.85;
 }
 
 /* CENTER */
@@ -158,27 +168,7 @@ nav a:hover {
   font-weight: bold;
 }
 
-/* INFO CARDS */
-.card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px;
-}
-
-.card h3 {
-  margin: 0 0 6px 0;
-  font-size: 15px;
-}
-
-.card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-/* EXTRA HOME INFO SECTION */
+/* INFO GRID */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -204,12 +194,12 @@ nav a:hover {
   line-height: 1.6;
 }
 
-/* FOOTER FIXED TO BOTTOM */
+/* FOOTER */
 footer {
   background: #0f172a;
   color: #94a3b8;
   padding: 40px 20px;
-  margin-top: auto; /* KEY FIX */
+  margin-top: auto;
 }
 
 .footer-grid {
@@ -292,7 +282,7 @@ footer a:hover {
   <!-- LEFT -->
   <div class="side">
     <img src="Screenshot_2026-04-08_001054.png" onclick="openModal(this.src)">
-    <img class="divider" src="image.png">
+    <img class="divider" src="image.png" alt="divider">
     <img src="002.webp" onclick="openModal(this.src)">
   </div>
 
@@ -310,7 +300,6 @@ footer a:hover {
       <a class="btn" href="https://www.roblox.com/share/g/620380444">Roblox Group</a>
     </div>
 
-    <!-- NEW HOME CONTENT -->
     <div class="info-grid">
 
       <div class="info-box">
@@ -340,7 +329,7 @@ footer a:hover {
   <!-- RIGHT -->
   <div class="side">
     <img src="MedalTVRoblox20260307193243532_-_Copy.png" onclick="openModal(this.src)">
-    <img class="divider" src="image.png">
+    <img class="divider" src="image.png" alt="divider">
     <img src="MedalTVRoblox20260307201844677.png" onclick="openModal(this.src)">
   </div>
 
