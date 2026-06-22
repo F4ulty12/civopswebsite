@@ -13,6 +13,7 @@
   --border: #e5e7eb;
 }
 
+/* PAGE BASE */
 html, body {
   height: 100%;
 }
@@ -65,7 +66,7 @@ nav a:hover {
   color: white;
 }
 
-/* LAYOUT */
+/* PUSH FOOTER */
 .wrapper {
   flex: 1;
   display: flex;
@@ -81,12 +82,14 @@ nav a:hover {
   padding: 30px 20px;
 }
 
+/* SIDE */
 .side {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
+/* IMPORTANT: prevent stretching */
 .side img:not(.divider) {
   width: 100%;
   height: 165px;
@@ -94,11 +97,18 @@ nav a:hover {
   border-radius: 14px;
   border: 1px solid #e5e7eb;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
+.side img:not(.divider):hover {
+  transform: scale(1.03);
+}
+
+/* DIVIDER (unchanged behavior) */
 .divider {
   width: 100%;
   height: 20px;
+  object-fit: cover;
   opacity: 0.6;
   border-radius: 6px;
   pointer-events: none;
@@ -111,6 +121,7 @@ nav a:hover {
   gap: 14px;
 }
 
+/* HERO */
 .hero {
   background: linear-gradient(135deg, #111827, #1f2937);
   color: white;
@@ -127,9 +138,10 @@ nav a:hover {
   margin-top: 6px;
   color: #cbd5e1;
   font-size: 13px;
+  line-height: 1.6;
 }
 
-/* GRID */
+/* GRID (NO STRETCH FIXED) */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -142,8 +154,8 @@ nav a:hover {
   border-radius: 14px;
   padding: 16px;
   cursor: pointer;
-  transition: 0.2s;
-  position: relative;
+  transition: 0.2s ease;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -167,7 +179,7 @@ nav a:hover {
   color: #6b7280;
 }
 
-/* FOOTER */
+/* FOOTER (UNCHANGED + BOTTOM FIX) */
 footer {
   background: #0f172a;
   color: #94a3b8;
@@ -201,35 +213,63 @@ footer a:hover {
   color: white;
 }
 
-/* MODAL (ABOUT ME POPUP) */
-.modal {
+/* MODAL 1: IMAGE FULLSCREEN */
+.img-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.img-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+/* MODAL 2: PROFILE */
+.profile-modal {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.75);
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 1000;
 }
 
-.modal-box {
-  width: 420px;
+.profile-box {
+  width: 400px;
   background: white;
   border-radius: 14px;
   padding: 18px;
   border: 1px solid #e5e7eb;
 }
 
-.modal-box h2 {
+.profile-box h2 {
   margin: 0 0 10px 0;
   font-size: 18px;
 }
 
-.modal-box p {
+.profile-box p {
   margin: 0;
   font-size: 13px;
   color: #4b5563;
   line-height: 1.6;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -257,9 +297,9 @@ footer a:hover {
 
   <!-- LEFT -->
   <div class="side">
-    <img src="image1.png">
+    <img src="image1.png" onclick="openImage(this.src)">
     <img class="divider" src="image.png">
-    <img src="image2.png">
+    <img src="002.webp" onclick="openImage(this.src)">
   </div>
 
   <!-- CENTER -->
@@ -267,7 +307,7 @@ footer a:hover {
 
     <div class="hero">
       <h1>🏛 Executive Cabinet</h1>
-      <p>Leadership structure overseeing Civilian Operations within KSRP. Click a member to view their profile.</p>
+      <p>Click members for profile info. Click images for fullscreen view.</p>
     </div>
 
     <div class="grid">
@@ -281,10 +321,10 @@ footer a:hover {
       <div class="card" onclick="openProfile('Lt. Governor')">
         <b>Lt. Governor</b>
         <span>Stephen_1209</span>
-        <div class="job">Job: Assists Governor in all operations</div>
+        <div class="job">Job: Assists Governor in operations</div>
       </div>
 
-      <div class="card" onclick="openProfile('Executive Cabinet Director')">
+      <div class="card" onclick="openProfile('Executive Director')">
         <b>Director of Executive Cabinet</b>
         <span>Itslixm_.</span>
         <div class="job">Job: Manages executive structure</div>
@@ -293,7 +333,7 @@ footer a:hover {
       <div class="card" onclick="openProfile('Personnel Director')">
         <b>Director of Personnel Cabinet</b>
         <span>Herobrinexd2132</span>
-        <div class="job">Job: Handles staffing and recruitment</div>
+        <div class="job">Job: Handles staffing & recruitment</div>
       </div>
 
     </div>
@@ -302,32 +342,73 @@ footer a:hover {
 
   <!-- RIGHT -->
   <div class="side">
-    <img src="MedalTVRoblox20260307200735969_-_Copy.png">
+    <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openImage(this.src)">
     <img class="divider" src="image.png">
-    <img src="MedalTVRoblox20260307201844677.png">
+    <img src="MedalTVRoblox20260307201844677.png" onclick="openImage(this.src)">
   </div>
 
 </div>
 </div>
 
-<!-- ABOUT MODAL -->
-<div class="modal" id="modal" onclick="closeProfile(event)">
-  <div class="modal-box" id="modalBox">
-    <h2 id="title"></h2>
-    <p id="aboutText"></p>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>🏛 Civ Ops</h3>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="cabinet.html">Executive Cabinet</a>
+      <a href="documents.html">Documents</a>
+    </div>
+
+    <div>
+      <h3>📚 Resources</h3>
+      <a href="#">Applications</a>
+      <a href="#">Rules</a>
+      <a href="#">Economy</a>
+    </div>
+
+    <div>
+      <h3>🌐 Community</h3>
+      <a href="#">Roblox Group</a>
+      <a href="#">Discord</a>
+    </div>
+  </div>
+</footer>
+
+<!-- IMAGE MODAL -->
+<div class="img-modal" id="imgModal" onclick="closeImage(event)">
+  <img id="imgPreview">
+</div>
+
+<!-- PROFILE MODAL -->
+<div class="profile-modal" id="profileModal" onclick="closeProfile(event)">
+  <div class="profile-box">
+    <h2 id="profileTitle"></h2>
+    <p>About: None</p>
   </div>
 </div>
 
 <script>
+function openImage(src) {
+  document.getElementById("imgModal").style.display = "flex";
+  document.getElementById("imgPreview").src = src;
+}
+
+function closeImage(e) {
+  if (e.target.id === "imgModal") {
+    document.getElementById("imgModal").style.display = "none";
+  }
+}
+
 function openProfile(name) {
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("title").innerText = name;
-  document.getElementById("aboutText").innerText = "About: None";
+  document.getElementById("profileModal").style.display = "flex";
+  document.getElementById("profileTitle").innerText = name;
 }
 
 function closeProfile(e) {
-  if (e.target.id === "modal") {
-    document.getElementById("modal").style.display = "none";
+  if (e.target.id === "profileModal") {
+    document.getElementById("profileModal").style.display = "none";
   }
 }
 </script>
