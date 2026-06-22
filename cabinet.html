@@ -394,6 +394,7 @@ footer a:hover {
 <script>
     const profiles = {
   "Governor of Kentucky": {
+    name: "F4ultyOfficial",
     role: "Governor",
     rank: "Executive Leadership",
     about: `Former high-level scripter with 6+ years of Roblox development experience, specializing in gameplay systems, UI design, and backend architecture.
@@ -404,18 +405,21 @@ Focuses on leadership, organization, and maintaining a professional roleplay env
   },
 
   "Lt. Governor": {
+    name: "Stephen_1209",
     role: "Lieutenant Governor",
     rank: "Executive Leadership",
     about: `None.`,
   },
 
   "Executive Director": {
+    name: "Itslixm_.",
     role: "Director of Executive Cabinet",
     rank: "Cabinet Administration",
     about: `None.`,
   },
 
   "Personnel Director": {
+    name: "Herobrinexd2132",
     role: "Director of Personnel Cabinet",
     rank: "Human Resources",
     about: `None.`,
@@ -435,10 +439,14 @@ function closeImage(e) {
 
 function openProfile(name) {
   document.getElementById("profileModal").style.display = "flex";
-  document.getElementById("profileTitle").innerText = name;
+
+  const profile = profiles[name];
+
+  document.getElementById("profileTitle").innerText =
+    profile ? profile.role : name;
 
   document.getElementById("profileAbout").innerText =
-    profiles[name]?.about || "About: None";
+    profile ? profile.about : "About: None";
 }
 
 function closeProfile(e) {
