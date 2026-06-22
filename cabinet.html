@@ -178,6 +178,24 @@ nav a:hover {
   font-size: 12px;
   color: #6b7280;
 }
+  
+  const profiles = {
+  "Governor of Kentucky": {
+    about: "Former developer and current head of Civilian Operations leadership within KSRP. Focused on structure, policy, and oversight."
+  },
+
+  "Lt. Governor": {
+    about: "Supports executive leadership and assists in managing Civ Ops operations and staff coordination."
+  },
+
+  "Executive Director": {
+    about: "Oversees executive structure and ensures departments remain organized and effective."
+  },
+
+  "Personnel Director": {
+    about: "Manages recruitment, staffing, and personnel-related operations within Civilian Operations."
+  }
+};
 
 /* FOOTER (UNCHANGED + BOTTOM FIX) */
 footer {
@@ -404,6 +422,9 @@ function closeImage(e) {
 function openProfile(name) {
   document.getElementById("profileModal").style.display = "flex";
   document.getElementById("profileTitle").innerText = name;
+
+  document.getElementById("profileAbout").innerText =
+    profiles[name]?.about || "About: None";
 }
 
 function closeProfile(e) {
