@@ -68,13 +68,14 @@ nav a:hover {
   color: white;
 }
 
-/* PUSH FOOTER */
+/* WRAPPER */
 .wrapper {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
+/* GRID */
 .page {
   display: grid;
   grid-template-columns: 1fr 2.2fr 1fr;
@@ -84,23 +85,50 @@ nav a:hover {
   padding: 30px 20px;
 }
 
-/* SIDE */
+/* SIDE COLUMN FIX (IMPORTANT BUG FIX) */
 .side {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  min-width: 0;
 }
 
-/* DIVIDER (unchanged behavior) */
+/* 🔥 FIX 1: ALL SIDE IMAGES ARE CONTROLLED */
+.side img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: block;
+  overflow: hidden;
+}
+
+.side img:hover {
+  transform: scale(1.04);
+}
+
+/* 🔥 FIX 2: DIVIDER STANDARDIZED */
 .divider {
   width: 100%;
   height: 20px;
   max-height: 20px;
   object-fit: cover;
   display: block;
-  overflow: hidden;
   margin: 6px 0;
   opacity: 0.6;
+
+  border-radius: 10px;
+  transition: 0.25s ease;
+  cursor: default;
+}
+
+.divider:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  opacity: 0.85;
 }
 
 /* CENTER */
@@ -130,7 +158,7 @@ nav a:hover {
   line-height: 1.6;
 }
 
-/* GRID (NO STRETCH FIXED) */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -167,8 +195,8 @@ nav a:hover {
   font-size: 12px;
   color: #6b7280;
 }
-  
-/* FOOTER (UNCHANGED + BOTTOM FIX) */
+
+/* FOOTER */
 footer {
   background: #0f172a;
   color: #94a3b8;
@@ -202,7 +230,7 @@ footer a:hover {
   color: white;
 }
 
-/* MODAL 1: IMAGE FULLSCREEN */
+/* IMAGE MODAL FIX (BUG FIX) */
 .img-modal {
   display: none;
   position: fixed;
@@ -216,10 +244,13 @@ footer a:hover {
 .img-modal img {
   max-width: 90%;
   max-height: 90%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* 🔥 FIX: prevents stretching fullscreen */
   border-radius: 12px;
 }
 
-/* MODAL 2: PROFILE */
+/* PROFILE MODAL */
 .profile-modal {
   display: none;
   position: fixed;
@@ -240,19 +271,6 @@ footer a:hover {
   border: 1px solid #e5e7eb;
 }
 
-.profile-box h2 {
-  margin: 0 0 10px 0;
-  font-size: 18px;
-  line-height: 1.3;
-}
-
-.profile-box p {
-  margin: 0;
-  font-size: 13px;
-  color: #4b5563;
-  line-height: 1.6;
-}
-  
 /* MOBILE */
 @media (max-width: 900px) {
   .page {
@@ -290,7 +308,7 @@ footer a:hover {
   <!-- LEFT -->
   <div class="side">
     <img src="image1.png" onclick="openImage(this.src)">
-    <img class="divider" src="image.png">
+    <img class="divider" src="image.png" alt="divider">
     <img src="002.webp" onclick="openImage(this.src)">
   </div>
 
@@ -335,7 +353,7 @@ footer a:hover {
   <!-- RIGHT -->
   <div class="side">
     <img src="Screenshot_2026-04-08_001054.png" onclick="openImage(this.src)">
-    <img class="divider" src="image.png">
+    <img class="divider" src="image.png" alt="divider">
     <img src="MedalTVRoblox20260307201844677.png" onclick="openImage(this.src)">
   </div>
 
@@ -368,12 +386,11 @@ footer a:hover {
   </div>
 </footer>
 
-<!-- IMAGE MODAL -->
+<!-- MODALS -->
 <div class="img-modal" id="imgModal" onclick="closeImage(event)">
   <img id="imgPreview">
 </div>
 
-<!-- PROFILE MODAL -->
 <div class="profile-modal" id="profileModal" onclick="closeProfile(event)">
   <div class="profile-box">
     <h2 id="profileTitle"></h2>
@@ -383,7 +400,7 @@ footer a:hover {
 </div>
 
 <script>
-    const profiles = {
+const profiles = {
   "Governor of Kentucky": {
     name: "F4ultyOfficial",
     about: `Former professional scripter with 6+ years of Roblox development experience.
@@ -400,17 +417,10 @@ Focuses on leadership, organization, and roleplay quality.`
 Now, I serve as the Lieutenant Governor of Kentucky Civilian Operations, where I strive to lead with accountability, empathy, and a genuine commitment to the people I serve.`
   },
 
-  "Executive Director": {
-    name: "Itslixm_.",
-    about: `None.`
-  },
-
-  "Personnel Director": {
-    name: "Herobrinexd2132",
-    about: `None.`
-  }
+  "Executive Director": { name: "Itslixm_.", about: "None." },
+  "Personnel Director": { name: "Herobrinexd2132", about: "None." }
 };
-  
+
 function openImage(src) {
   document.getElementById("imgModal").style.display = "flex";
   document.getElementById("imgPreview").src = src;
@@ -427,14 +437,9 @@ function openProfile(key) {
 
   const profile = profiles[key];
 
-  document.getElementById("profileTitle").innerText =
-    profile ? key : key;
-
-  document.getElementById("profileSubtitle").innerText =
-    profile ? profile.name : "";
-
-  document.getElementById("profileAbout").innerText =
-    profile ? profile.about : "About: None";
+  document.getElementById("profileTitle").innerText = key;
+  document.getElementById("profileSubtitle").innerText = profile?.name || "";
+  document.getElementById("profileAbout").innerText = profile?.about || "About: None";
 }
 
 function closeProfile(e) {
@@ -442,7 +447,6 @@ function closeProfile(e) {
     document.getElementById("profileModal").style.display = "none";
   }
 }
-  
 </script>
 
 </body>
