@@ -243,6 +243,8 @@ footer a:hover {
 
 .profile-box {
   width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
   background: white;
   border-radius: 14px;
   padding: 18px;
@@ -392,19 +394,31 @@ footer a:hover {
 <script>
     const profiles = {
   "Governor of Kentucky": {
-    about: "Former developer and current head of Civilian Operations leadership within KSRP. Focused on structure, policy, and oversight."
+    role: "Governor",
+    rank: "Executive Leadership",
+    about: `Former high-level scripter with 6+ years of Roblox development experience, specializing in gameplay systems, UI design, and backend architecture.
+
+Currently oversees Civilian Operations within KSRP, ensuring structure, realism, and policy enforcement across all civilian systems.
+
+Focuses on leadership, organization, and maintaining a professional roleplay environment.`,
   },
 
   "Lt. Governor": {
-    about: "Supports executive leadership and assists in managing Civ Ops operations and staff coordination."
+    role: "Lieutenant Governor",
+    rank: "Executive Leadership",
+    about: `None.`,
   },
 
   "Executive Director": {
-    about: "Oversees executive structure and ensures departments remain organized and effective."
+    role: "Director of Executive Cabinet",
+    rank: "Cabinet Administration",
+    about: `None.`,
   },
 
   "Personnel Director": {
-    about: "Manages recruitment, staffing, and personnel-related operations within Civilian Operations."
+    role: "Director of Personnel Cabinet",
+    rank: "Human Resources",
+    about: `None.`,
   }
 };
   
