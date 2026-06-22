@@ -13,24 +13,19 @@
   --border: #e5e7eb;
 }
 
-html, body {
-  height: 100%;
-}
-
+/* EXACT ABOUT-PAGE STYLE SPACING BASE */
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
-  display: flex;
-  flex-direction: column;
 }
 
-/* HEADER */
+/* HEADER (kept identical structure style) */
 header {
   background: #111827;
   color: white;
-  padding: 16px 24px;
+  padding: 14px 24px;
 }
 
 .header-top {
@@ -65,31 +60,25 @@ nav a:hover {
   color: white;
 }
 
-/* PUSH FOOTER DOWN */
-.wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-/* GRID */
+/* MAIN GRID — MATCH ABOUT PAGE SPACING */
 .page {
   display: grid;
   grid-template-columns: 1fr 2.2fr 1fr;
-  gap: 18px;
+  gap: 18px; /* EXACT same spacing rule */
   max-width: 1400px;
-  width: 100%;
-  padding: 30px 20px;
+  margin: 30px auto;
+  padding: 0 20px;
+  align-items: start;
 }
 
-/* SIDE COLUMNS */
+/* SIDE COLUMNS (same spacing rhythm) */
 .side {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 18px; /* SAME AS ABOUT */
 }
 
-/* CLICKABLE IMAGES */
+/* IMAGES */
 .side img:not(.divider) {
   width: 100%;
   height: 165px;
@@ -104,7 +93,7 @@ nav a:hover {
   transform: scale(1.04);
 }
 
-/* DIVIDER (EXACT ABOUT PAGE HEIGHT) */
+/* DIVIDER — EXACT ABOUT PAGE BEHAVIOR */
 .divider {
   width: 100%;
   height: 20px;
@@ -113,7 +102,6 @@ nav a:hover {
   opacity: 0.6;
   border-radius: 6px;
   pointer-events: none;
-  cursor: default;
 }
 
 /* CENTER */
@@ -123,11 +111,12 @@ nav a:hover {
   gap: 14px;
 }
 
+/* HERO */
 .hero {
   background: linear-gradient(135deg, #111827, #1f2937);
   color: white;
   border-radius: 16px;
-  padding: 30px;
+  padding: 24px; /* matched tighter About spacing feel */
 }
 
 .hero h1 {
@@ -141,9 +130,10 @@ nav a:hover {
   line-height: 1.7;
 }
 
+/* BUTTONS */
 .btn {
   display: inline-block;
-  margin-top: 14px;
+  margin-top: 12px;
   margin-right: 8px;
   padding: 8px 12px;
   background: white;
@@ -154,10 +144,7 @@ nav a:hover {
   font-weight: bold;
 }
 
-.btn:hover {
-  background: #e5e7eb;
-}
-
+/* CARDS */
 .card {
   background: white;
   border: 1px solid var(--border);
@@ -177,7 +164,7 @@ nav a:hover {
   line-height: 1.6;
 }
 
-/* FOOTER FIXED TO BOTTOM */
+/* FOOTER (sticky like before) */
 footer {
   background: #0f172a;
   color: #94a3b8;
@@ -255,14 +242,13 @@ footer a:hover {
   </nav>
 </header>
 
-<div class="wrapper">
 <div class="page">
 
-  <!-- LEFT -->
+  <!-- LEFT SIDE (NEW RANDOMIZED IMAGES) -->
   <div class="side">
-    <img src="image1.png" onclick="openModal(this.src)">
+    <img src="Screenshot_2026-04-08_001054.png" onclick="openModal(this.src)">
     <img class="divider" src="image.png">
-    <img src="image2.png" onclick="openModal(this.src)">
+    <img src="002.webp" onclick="openModal(this.src)">
   </div>
 
   <!-- CENTER -->
@@ -271,8 +257,8 @@ footer a:hover {
     <div class="hero">
       <h1>🏙 Civilian Operations</h1>
       <p>
-        The backbone of civilian roleplay in KSRP.
-        We create structured systems, immersive economy, and realistic roleplay environments.
+        The core of civilian roleplay within KSRP, focusing on structured systems,
+        immersive economy, and realistic community interaction.
       </p>
 
       <a class="btn" href="documents.html">Applications</a>
@@ -281,27 +267,25 @@ footer a:hover {
 
     <div class="card">
       <h3>📌 Mission</h3>
-      <p>Building structured civilian systems for immersive roleplay.</p>
+      <p>Build and maintain immersive civilian systems for KSRP roleplay.</p>
     </div>
 
     <div class="card">
       <h3>🏢 Focus</h3>
-      <p>Economy, businesses, realism, and civilian interaction systems.</p>
+      <p>Economy, realism, civilian structure, and interactive RP systems.</p>
     </div>
 
   </div>
 
-  <!-- RIGHT -->
+  <!-- RIGHT SIDE (NEW RANDOMIZED IMAGES) -->
   <div class="side">
-    <img src="MedalTVRoblox20260307200704891_-_Copy.png" onclick="openModal(this.src)">
+    <img src="MedalTVRoblox20260307193243532_-_Copy.png" onclick="openModal(this.src)">
     <img class="divider" src="image.png">
-    <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
+    <img src="MedalTVRoblox20260307201844677.png" onclick="openModal(this.src)">
   </div>
 
 </div>
-</div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
 
@@ -329,7 +313,7 @@ footer a:hover {
   </div>
 </footer>
 
-<!-- MODAL (CLICK TO ENLARGE IMAGES ONLY) -->
+<!-- MODAL -->
 <div class="modal" id="modal" onclick="closeModal(event)">
   <img id="modalImg">
 </div>
