@@ -20,6 +20,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -67,16 +69,21 @@ nav a:hover {
   color: white;
 }
 
-.page {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 18px;
-  max-width: 1400px;
-  margin: 30px auto;
-  padding: 0 20px;
-  align-items: center;
+.wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
+.page {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr 1fr;
+  gap: 18px;
+  max-width: 1400px;
+  width: 100%;
+  padding: 30px 20px;
+}
+  
 .side {
   display: flex;
   flex-direction: column;
@@ -281,7 +288,8 @@ footer h3 {
   </nav>
 </header>
 
-<div class="page">
+<div class="wrapper">
+  <div class="page">
 
   <!-- LEFT -->
   <div class="side">
@@ -368,6 +376,7 @@ footer h3 {
 <!-- MODAL -->
 <div class="modal" id="modal" onclick="closeModal(event)">
   <img id="modalImg">
+  </div>
 </div>
 
 <script>
