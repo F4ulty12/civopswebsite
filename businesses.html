@@ -160,8 +160,10 @@ nav a:hover {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 18px;
-  transition: 0.2s ease;
+
+  transition: transform 0.2s ease;
   cursor: default;
+  will-change: transform;
 }
 
 .card:hover {
