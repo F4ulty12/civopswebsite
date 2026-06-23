@@ -174,14 +174,15 @@ nav a:hover {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 16px;
-
-  transition: transform 0.2s ease;
-  cursor: default;
-  will-change: transform;
+  cursor: pointer;
+  transition: 0.25s ease;
+  overflow: hidden;
 }
 
 .info-box:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  border-color: #c7d2fe;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
 
 .info-box h3 {
