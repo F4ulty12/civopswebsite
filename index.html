@@ -217,30 +217,25 @@ nav a:hover {
 footer {
   background: #0f172a;
   color: #94a3b8;
-  padding: 40px 20px;
-
+  padding: 20px 20px;
+  margin-top: auto;
   display: flex;
   flex-direction: column;
 }
 
 .footer-grid {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
 }
 
 .footer-divider {
   max-width: 1200px;
-  margin: 30px auto 15px;
+  margin: 15px auto 10px;
   height: 1px;
   background: rgba(148, 163, 184, 0.2);
-}
-
-footer .copyright {
-  text-align: center;
-  font-size: 0.75rem;
-  color: #aaa;
-  grid-column: 1 / -1;
-  margin-top: 1rem;
 }
 
 .footer-bottom {
@@ -250,10 +245,16 @@ footer .copyright {
   text-align: center;
   font-size: 11px;
   opacity: 0.65;
-  padding-top: 15px;
+  padding-top: 8px;
   padding-left: 4px;
 }
-  
+
+footer h3 {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
 footer a {
   display: block;
   color: #60a5fa;
@@ -267,7 +268,7 @@ footer a:hover {
   color: #93c5fd;
   text-decoration: underline;
 }
-
+  
 /* FOOTER */
 footer {
   background: #0f172a;
@@ -424,7 +425,7 @@ footer h3 {
       <a href="https://discord.gg/59yaUTcSEj" target="_blank">Discord</a>
     </div>
   </div>
-  <p class="copyright">© KSRP Civilian Operations - All Rights Reserved.</p>
+  <p class="footer-bottom">© KSRP Civilian Operations - All Rights Reserved.</p>
 </footer>
 
 <!-- MODAL -->
