@@ -155,24 +155,28 @@ nav a:hover {
 }
 
 .btn {
-  display: inline-block;
-  margin-top: 12px;
-  margin-right: 8px;
-  padding: 8px 12px;
-  background: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  margin-right: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.95);
   color: #111827;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
   font-size: 13px;
-  font-weight: bold;
-  transition: 0.2s ease;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.2);
   cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  background: #f3f4f6;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transform: translateY(-3px) scale(1.02);
+  background: #f9fafb;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .section-title {
