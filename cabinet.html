@@ -85,7 +85,6 @@ nav a:hover {
   padding: 30px 20px;
 }
 
-/* SIDE */
 .side {
   display: flex;
   flex-direction: column;
@@ -106,11 +105,10 @@ nav a:hover {
   cursor: pointer;
 }
 
-.divider {
-  cursor: default;
+.side img:not(.divider):hover {
+  transform: scale(1.04);
 }
 
-/* DIVIDER */
 .divider {
   width: 100%;
   height: 20px;
@@ -121,8 +119,9 @@ nav a:hover {
   opacity: 0.6;
 
   border-radius: 10px;
-  transition: 0.25s ease;
+
   cursor: default;
+  pointer-events: none;
 }
 
 /* CENTER */
