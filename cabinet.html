@@ -99,12 +99,15 @@ nav a:hover {
   object-fit: cover;
   border-radius: 14px;
   border: 1px solid #e5e7eb;
-  cursor: pointer;
   transition: 0.25s ease;
 }
 
-.side img:not(.divider):hover {
-  transform: scale(1.04);
+.side img:not(.divider) {
+  cursor: pointer;
+}
+
+.divider {
+  cursor: default;
 }
 
 /* DIVIDER */
