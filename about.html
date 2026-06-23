@@ -136,9 +136,13 @@ nav a:hover {
 
 .card {
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 18px;
+
+  transition: transform 0.2s ease;
+  cursor: default;
+  will-change: transform;
 }
 
 .card:hover {
