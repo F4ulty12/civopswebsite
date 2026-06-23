@@ -159,15 +159,16 @@ nav a:hover {
   background: white;
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 18px;
-
-  transition: transform 0.2s ease;
-  cursor: default;
-  will-change: transform;
+  padding: 16px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  border-color: #c7d2fe;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
 
 .card b {
