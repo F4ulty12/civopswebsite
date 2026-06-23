@@ -235,12 +235,22 @@ footer {
   background: rgba(148, 163, 184, 0.2);
 }
 
-.footer-bottom {
-  margin-top: auto;
+footer .copyright {
   text-align: center;
-  font-size: 12px;
+  font-size: 0.75rem;
+  color: #aaa;
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 11px;
   opacity: 0.65;
-  padding-top: 20px;
+  padding-top: 15px;
 }
   
 footer a {
@@ -405,12 +415,6 @@ footer h3 {
       <a href="https://discord.com/channels/1411836815174013048/1411846250092822539" target="_blank">Applications</a>
       <a href="https://docs.google.com/document/d/1Xyz_473by6sskYHBkjv5-yyr0QlATa8WGaIO-xJFGZ4/edit?usp=sharing" target="_blank">Rules & Regulations</a>
       <a href="https://docs.google.com/document/d/1YK7AHLKnuTsTiLnHeO7Ybr0RB37CluGGmw-sU-4mFeI/edit?usp=sharing" target="_blank">Economic Guidelines</a>
-
-
-      <div class="footer-divider"></div>
-
-
-      © KSRP Civilian Operations - All Rights Reserved.
     </div>
 
     <div>
@@ -419,6 +423,7 @@ footer h3 {
       <a href="https://discord.gg/59yaUTcSEj" target="_blank">Discord</a>
     </div>
   </div>
+  <p class="copyright">© KSRP Civilian Operations - All Rights Reserved.</p>
 </footer>
 
 <!-- MODAL -->
