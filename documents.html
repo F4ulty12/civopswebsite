@@ -1,19 +1,363 @@
-<html><head><title>Documents</title><link rel="stylesheet" href="style.css"></head><body>
-<header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="icon" type="image/png" href="loho.png">
-<h2>Civilian Operations</h2>
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="cabinet.html">Board Of Governors</a>
-<a href="businesses.html">Businesses</a>
-<a href="licensing.html">Licensing</a>
-<a href="documents.html">Documents</a>
-</nav>
+<title>Documents</title>
+
+<style>
+:root {
+  --bg: #f4f6f8;
+  --text: #111827;
+  --muted: #4b5563;
+  --border: #e5e7eb;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background: #111827;
+  color: white;
+  padding: 14px 24px;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+/* NAV */
+nav {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* LAYOUT */
+.wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr 1fr;
+  gap: 18px;
+  max-width: 1400px;
+  width: 100%;
+  padding: 30px 20px;
+}
+
+/* SIDE */
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.side img:not(.divider) {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.side img:not(.divider):hover {
+  transform: scale(1.04);
+}
+
+.divider {
+  width: 100%;
+  height: 20px;
+  object-fit: cover;
+  opacity: 0.6;
+  border-radius: 10px;
+  cursor: default;
+}
+
+/* CENTER */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.hero p {
+  margin-top: 6px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* CLEAN BUTTON CARD */
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #c7d2fe;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.card b {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.card span {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* FOOTER */
+footer {
+  margin-top: auto;
+  background: #0f172a;
+  color: #94a3b8;
+  padding: 40px 20px;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+footer h3 {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+footer a {
+  display: block;
+  color: #60a5fa;
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 6px;
+  transition: 0.2s ease;
+}
+
+footer a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-top">
+    <img src="loho.png">
+    <h2>Civilian Operations</h2>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="cabinet.html">Board Of Governors</a>
+    <a href="businesses.html">Businesses</a>
+    <a href="licensing.html">Licensing</a>
+    <a href="documents.html">Documents</a>
+  </nav>
 </header>
-<div class="container">
-<div class="card"><a href="https://docs.google.com/document/d/1Xyz_473by6sskYHBkjv5-yyr0QlATa8WGaIO-xJFGZ4/edit?usp=sharing">Rules Document</a></div>
-<div class="card"><a href="https://docs.google.com/document/d/1YK7AHLKnuTsTiLnHeO7Ybr0RB37CluGGmw-sU-4mFeI/edit?usp=sharing">Economic Guidelines</a></div>
-<div class="card"><a href="https://discord.com/channels/1411836815174013048/1411846250092822539">Applications</a></div>
-<div class="card"><a href="https://www.roblox.com/share/g/620380444">Civilian Operations Group</a></div>
-</div></body></html>
+
+<div class="wrapper">
+<div class="page">
+
+  <!-- LEFT -->
+  <div class="side">
+    <img src="Screenshot_2026-04-08_001054.png" onclick="openModal(this.src)">
+    <img class="divider" src="image.png">
+    <img src="MedalTVRoblox20260307193243532_-_Copy.png" onclick="openModal(this.src)">
+  </div>
+
+  <!-- CENTER -->
+  <div class="content">
+
+    <div class="hero">
+      <h1>📄 Official Documents</h1>
+      <p>Important Civilian Operations resources, rules, and applications for KSRP.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card" onclick="window.open('https://docs.google.com/document/d/1Xyz_473by6sskYHBkjv5-yyr0QlATa8WGaIO-xJFGZ4/edit?usp=sharing')">
+        <b>📘 Rules Document</b>
+        <span>Full server rules, conduct expectations, and enforcement guidelines.</span>
+      </div>
+
+      <div class="card" onclick="window.open('https://docs.google.com/document/d/1YK7AHLKnuTsTiLnHeO7Ybr0RB37CluGGmw-sU-4mFeI/edit?usp=sharing')">
+        <b>💰 Economic Guidelines</b>
+        <span>Explains civilian economy systems, business operations, and payouts.</span>
+      </div>
+
+      <div class="card" onclick="window.open('https://discord.com/channels/1411836815174013048/1411846250092822539')">
+        <b>📝 Applications</b>
+        <span>Apply for jobs, roles, and civilian opportunities inside KSRP.</span>
+      </div>
+
+      <div class="card" onclick="window.open('https://www.roblox.com/share/g/620380444')">
+        <b>🏢 Civilian Operations Group</b>
+        <span>Join the official Roblox group for updates and access.</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="side">
+    <img src="MedalTVRoblox20260307201844677.png" onclick="openModal(this.src)">
+    <img class="divider" src="image.png">
+    <img src="002.webp" onclick="openModal(this.src)">
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <h3>🏛 Civ Ops</h3>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="cabinet.html">Board Of Governors</a>
+      <a href="documents.html">Documents</a>
+    </div>
+
+    <div>
+      <h3>📚 Resources</h3>
+      <a href="#">Applications</a>
+      <a href="#">Rules & Regulations</a>
+      <a href="#">Economic Guidelines</a>
+    </div>
+
+    <div>
+      <h3>🌐 Community</h3>
+      <a href="#">Roblox Group</a>
+      <a href="#">Discord</a>
+    </div>
+
+  </div>
+</footer>
+
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <img id="modalImg">
+</div>
+
+<script>
+function openModal(src) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal(e) {
+  if (e.target.id === "modal") {
+    document.getElementById("modal").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
