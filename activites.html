@@ -102,6 +102,7 @@ nav a:hover {
   border: 1px solid #e5e7eb;
   cursor: pointer;
   transition: 0.25s ease;
+  display: block;
 }
 
 .side img:not(.divider):hover {
@@ -409,6 +410,22 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
 @media (max-width: 600px) {
   .tab-row { flex-wrap: wrap; }
   .difficulty-row { flex-wrap: wrap; }
@@ -443,7 +460,7 @@ footer a:hover {
     <img src="MedalTVRoblox20260307200735969_-_Copy.png" onclick="openModal(this.src)">
   </div>
 
-  <div class="hero">
+<div class="content">
     <h1>🧩 Activites</h1>
     <p>Generate roleplay ideas, build a civilian profile, submit suggestions, commend staff, or file a private report.</p>
   </div>
@@ -877,6 +894,23 @@ async function submitReport() {
     document.getElementById("rep-reason").value = "";
     document.getElementById("rep-evidence").value = "";
     showSuccess("rep-success");
+  }
+}
+</script>
+
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <img id="modalImg">
+</div>
+
+<script>
+function openModal(src) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal(e) {
+  if (e.target.id === "modal") {
+    document.getElementById("modal").style.display = "none";
   }
 }
 </script>
