@@ -142,10 +142,7 @@ nav a:hover {
   color: #475569;
 }
 
-.pill:hover {
-  background: #e2e8f0;
-}
-
+.pill:hover { background: #e2e8f0; }
 .pill.active-easy   { background: #dcfce7; color: #166534; border-color: #86efac; }
 .pill.active-medium { background: #fef9c3; color: #854d0e; border-color: #fde047; }
 .pill.active-hard   { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
@@ -184,9 +181,7 @@ nav a:hover {
   display: none;
 }
 
-.output-box.visible {
-  display: block;
-}
+.output-box.visible { display: block; }
 
 .output-box strong {
   color: var(--text);
@@ -290,9 +285,7 @@ nav a:hover {
   border-top: 1px solid var(--border);
 }
 
-.dropdown-body.open {
-  display: block;
-}
+.dropdown-body.open { display: block; }
 
 .tab-row {
   display: flex;
@@ -347,13 +340,6 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 24px;
-}
-
-.footer-divider {
-  max-width: 1200px;
-  margin: 15px auto 10px;
-  height: 1px;
-  background: rgba(148, 163, 184, 0.2);
 }
 
 .footer-bottom {
@@ -419,6 +405,7 @@ footer a:hover {
     <p>Generate roleplay ideas, build a civilian profile, submit suggestions, commend staff, or file a private report — all in one place.</p>
   </div>
 
+  <!-- RP GENERATOR -->
   <div class="card">
     <div class="card-title">🎲 Roleplay Idea Generator</div>
     <div class="difficulty-row">
@@ -431,6 +418,7 @@ footer a:hover {
     <div class="output-box" id="rp-output"></div>
   </div>
 
+  <!-- PROFILE GENERATOR -->
   <div class="card">
     <div class="card-title">👤 Civilian Profile Generator</div>
     <p style="font-size:13px; color:var(--muted); margin:0 0 14px 0;">Can't think of a character? Generate a full civilian profile — name, backstory, job, and more.</p>
@@ -438,6 +426,7 @@ footer a:hover {
     <div class="output-box" id="profile-output"></div>
   </div>
 
+  <!-- SUGGESTIONS -->
   <div class="card">
     <div class="card-title">💡 Submit a Suggestion</div>
     <div class="form-group">
@@ -458,10 +447,11 @@ footer a:hover {
       <label>Your Suggestion</label>
       <textarea id="sug-text" placeholder="Describe your suggestion in detail..."></textarea>
     </div>
-    <button class="submit-btn" onclick="submitForm('sug-success')">Submit Suggestion</button>
+    <button class="submit-btn" onclick="submitSuggestion()">Submit Suggestion</button>
     <div class="success-msg" id="sug-success">✅ Suggestion submitted! Thank you.</div>
   </div>
 
+  <!-- COMMENDATIONS & REPORTS -->
   <div class="card">
     <div class="dropdown-toggle" id="comm-toggle" onclick="toggleDropdown('comm-toggle', 'comm-body')">
       <div class="card-title" style="margin:0;">🏅 Commendations & Reports</div>
@@ -491,7 +481,7 @@ footer a:hover {
           <label>Why do they deserve recognition?</label>
           <textarea id="com-reason" placeholder="Tell us what they did..."></textarea>
         </div>
-        <button class="submit-btn" onclick="submitForm('com-success')">Submit Commendation</button>
+        <button class="submit-btn" onclick="submitCommendation()">Submit Commendation</button>
         <div class="success-msg" id="com-success">✅ Commendation submitted! We'll review it shortly.</div>
       </div>
 
@@ -515,7 +505,7 @@ footer a:hover {
           <label>Any evidence? (link)</label>
           <input type="text" id="rep-evidence" placeholder="Paste a link to a screenshot or video (optional)">
         </div>
-        <button class="submit-btn" onclick="submitForm('rep-success')">Submit Report Anonymously</button>
+        <button class="submit-btn" onclick="submitReport()">Submit Report Anonymously</button>
         <div class="success-msg" id="rep-success">✅ Report submitted anonymously. We'll review it.</div>
       </div>
 
@@ -525,6 +515,7 @@ footer a:hover {
 </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
@@ -552,7 +543,9 @@ footer a:hover {
 </footer>
 
 <script>
+const WORKER_URL = "https://civilianoperations.ksrp.workers.dev";
 
+// --- DIFFICULTY ---
 let currentDiff = 'any';
 function setDiff(el) {
   document.querySelectorAll('.pill').forEach(p => p.className = 'pill');
@@ -560,6 +553,7 @@ function setDiff(el) {
   el.classList.add('active-' + currentDiff);
 }
 
+// --- RP IDEAS ---
 const rpIdeas = {
   easy: [
     { title: "Corner Store Run", desc: "Head to a local convenience store to pick up supplies. Chat with other civilians along the way and maybe bump into someone you know." },
@@ -590,24 +584,25 @@ function generateRP() {
     : rpIdeas[currentDiff];
   const idea = pool[Math.floor(Math.random() * pool.length)];
   const box = document.getElementById('rp-output');
-  box.innerHTML = `<strong>${idea.title}</strong>${idea.desc}`;
+  box.innerHTML = '<strong>' + idea.title + '</strong>' + idea.desc;
   box.classList.add('visible');
 }
 
+// --- PROFILE GENERATOR ---
 const firstNames = ["James","Maria","Devin","Chloe","Marcus","Priya","Tyler","Aaliyah","Nathan","Sofia","Jordan","Keisha","Eli","Camila","Leon"];
 const lastNames = ["Hartley","Nguyen","Brooks","Rivera","Coleman","Patel","Sullivan","Okafor","Kim","Delgado","Pierce","Washington","Voss","Moreno","Stein"];
 const jobs = ["Mechanic","Nurse","Real Estate Agent","Restaurant Owner","Delivery Driver","Freelance Photographer","Construction Worker","Accountant","Teacher","Taxi Driver","Chef","Security Guard","Journalist","Electrician","Pharmacist"];
 const backstories = [
   "Moved to Kentucky three years ago after a messy divorce, trying to start fresh.",
-  "Born and raised in the area, never left, proud of it.",
+  "Born and raised in the area, never left — proud of it.",
   "Recently laid off and picking up side jobs while looking for something steady.",
   "Retired military, adjusting to civilian life and finding it harder than expected.",
-  "Came here for college and never went back home, fell in love with the community.",
+  "Came here for college and never went back home — fell in love with the community.",
   "Running from a complicated past in another state. Keeps to themselves mostly.",
   "Caring for an elderly parent while juggling a demanding job.",
   "Immigrant who worked hard to build a life here over the last decade.",
   "Young entrepreneur who dropped out of college to chase a business idea.",
-  "Single parent raising two kids on one income, resourceful and resilient.",
+  "Single parent raising two kids on one income — resourceful and resilient.",
 ];
 const quirks = [
   "Always carries a notepad and jots things down constantly.",
@@ -627,22 +622,21 @@ function generateProfile() {
   const backstory = backstories[Math.floor(Math.random()*backstories.length)];
   const quirk = quirks[Math.floor(Math.random()*quirks.length)];
   const box = document.getElementById('profile-output');
-  box.innerHTML = `
-    <strong>${name}, Age ${age}</strong>
-    <span style="display:block; margin-bottom:6px;"><b style="color:#374151;">Occupation:</b> ${job}</span>
-    <span style="display:block; margin-bottom:6px;"><b style="color:#374151;">Background:</b> ${backstory}</span>
-    <span style="display:block;"><b style="color:#374151;">Notable trait:</b> ${quirk}</span>
-  `;
+  box.innerHTML =
+    '<strong>' + name + ', Age ' + age + '</strong>' +
+    '<span style="display:block;margin-bottom:6px;"><b style="color:#374151;">Occupation:</b> ' + job + '</span>' +
+    '<span style="display:block;margin-bottom:6px;"><b style="color:#374151;">Background:</b> ' + backstory + '</span>' +
+    '<span style="display:block;"><b style="color:#374151;">Notable trait:</b> ' + quirk + '</span>';
   box.classList.add('visible');
 }
 
+// --- DROPDOWN ---
 function toggleDropdown(toggleId, bodyId) {
-  const toggle = document.getElementById(toggleId);
-  const body = document.getElementById(bodyId);
-  toggle.classList.toggle('open');
-  body.classList.toggle('open');
+  document.getElementById(toggleId).classList.toggle('open');
+  document.getElementById(bodyId).classList.toggle('open');
 }
 
+// --- TABS ---
 function switchTab(el, panelId) {
   el.closest('.dropdown-body').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   el.closest('.dropdown-body').querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -650,85 +644,111 @@ function switchTab(el, panelId) {
   document.getElementById(panelId).classList.add('active');
 }
 
-async function submitForm(successId, type, payload) {
+// --- SEND TO WORKER ---
+async function sendToWorker(embed) {
   try {
-    await fetch("/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        type,
-        ...payload
-      })
-    });
-
-    document.getElementById(successId).style.display = "block";
-
-    setTimeout(() => {
-      document.getElementById(successId).style.display = "none";
-    }, 4000);
-
-  } catch (err) {
-    alert("Failed to submit. Try again later.");
-    console.error(err);
-  }
-}
-<script>
-
-async function submitForm(successId) {
-  let type = "";
-  let payload = {};
-
-  if (successId === "sug-success") {
-    type = "suggestion";
-    payload = {
-      name: document.getElementById("sug-name")?.value || "",
-      category: document.getElementById("sug-cat")?.value || "",
-      text: document.getElementById("sug-text")?.value || ""
-    };
-  }
-
-  if (successId === "com-success") {
-    type = "commendation";
-    payload = {
-      name: document.getElementById("com-name")?.value || "",
-      who: document.getElementById("com-who")?.value || "",
-      role: document.getElementById("com-role")?.value || "",
-      reason: document.getElementById("com-reason")?.value || ""
-    };
-  }
-
-  if (successId === "rep-success") {
-    type = "report";
-    payload = {
-      who: document.getElementById("rep-who")?.value || "",
-      role: document.getElementById("rep-role")?.value || "",
-      reason: document.getElementById("rep-reason")?.value || "",
-      evidence: document.getElementById("rep-evidence")?.value || ""
-    };
-  }
-
-  try {
-    const res = await fetch("/submit", {
+    const res = await fetch(WORKER_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ type, ...payload })
+      body: JSON.stringify({ embeds: [embed] })
     });
-
-    console.log("Webhook response:", await res.text());
-
-    document.getElementById(successId).style.display = "block";
-
-    setTimeout(() => {
-      document.getElementById(successId).style.display = "none";
-    }, 4000);
-
+    if (!res.ok) throw new Error("Worker returned " + res.status);
+    return true;
   } catch (err) {
-    alert("Failed to submit. Try again later.");
-    console.error(err);
+    console.error("Submit error:", err);
+    alert("Failed to submit. Please try again later.");
+    return false;
   }
 }
+
+function showSuccess(id) {
+  const el = document.getElementById(id);
+  el.style.display = "block";
+  setTimeout(() => { el.style.display = "none"; }, 4000);
+}
+
+// --- SUGGESTION ---
+async function submitSuggestion() {
+  const name = document.getElementById("sug-name").value.trim() || "Anonymous";
+  const category = document.getElementById("sug-cat").value;
+  const text = document.getElementById("sug-text").value.trim();
+  if (!text) { alert("Please write your suggestion before submitting."); return; }
+
+  const ok = await sendToWorker({
+    title: "💡 New Suggestion",
+    color: 0x6366f1,
+    fields: [
+      { name: "Submitted By", value: name, inline: true },
+      { name: "Category", value: category, inline: true },
+      { name: "Suggestion", value: text }
+    ],
+    timestamp: new Date().toISOString()
+  });
+
+  if (ok) {
+    document.getElementById("sug-text").value = "";
+    showSuccess("sug-success");
+  }
+}
+
+// --- COMMENDATION ---
+async function submitCommendation() {
+  const name = document.getElementById("com-name").value.trim() || "Anonymous";
+  const who = document.getElementById("com-who").value.trim();
+  const role = document.getElementById("com-role").value.trim();
+  const reason = document.getElementById("com-reason").value.trim();
+  if (!who || !reason) { alert("Please fill in who you're commending and why."); return; }
+
+  const ok = await sendToWorker({
+    title: "🏅 New Commendation",
+    color: 0xf59e0b,
+    fields: [
+      { name: "Submitted By", value: name, inline: true },
+      { name: "Commending", value: who, inline: true },
+      { name: "Their Role", value: role || "Not specified", inline: true },
+      { name: "Reason", value: reason }
+    ],
+    timestamp: new Date().toISOString()
+  });
+
+  if (ok) {
+    document.getElementById("com-who").value = "";
+    document.getElementById("com-role").value = "";
+    document.getElementById("com-reason").value = "";
+    showSuccess("com-success");
+  }
+}
+
+// --- PRIVATE REPORT ---
+async function submitReport() {
+  const who = document.getElementById("rep-who").value.trim();
+  const role = document.getElementById("rep-role").value.trim();
+  const reason = document.getElementById("rep-reason").value.trim();
+  const evidence = document.getElementById("rep-evidence").value.trim();
+  if (!who || !reason) { alert("Please fill in who you're reporting and what happened."); return; }
+
+  const ok = await sendToWorker({
+    title: "🔒 Anonymous Private Report",
+    color: 0xef4444,
+    fields: [
+      { name: "Reporting", value: who, inline: true },
+      { name: "Their Role", value: role || "Not specified", inline: true },
+      { name: "What Happened", value: reason },
+      { name: "Evidence", value: evidence || "None provided" }
+    ],
+    footer: { text: "This report was submitted anonymously." },
+    timestamp: new Date().toISOString()
+  });
+
+  if (ok) {
+    document.getElementById("rep-who").value = "";
+    document.getElementById("rep-role").value = "";
+    document.getElementById("rep-reason").value = "";
+    document.getElementById("rep-evidence").value = "";
+    showSuccess("rep-success");
+  }
+}
+</script>
 
 </body>
 </html>
