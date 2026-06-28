@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="loho.png" rel="icon" type="image/png"/>
+  <title>
+   Activites
+  </title>
+  <meta content="Civilian Operations" property="og:title"/>
+  <meta content="https://civilianoperations.ksrp.workers.dev/smallerlogo.png" property="og:image"/>
+  <meta content="https://civilianoperations.ksrp.workers.dev/" property="og:url"/>
+  <meta content="The civilian backbone of Kentucky State Roleplay. We manage realism, economy systems, businesses, and immersive RP structure." property="og:description"/>
+  <meta content="website" property="og:type"/>
+  <style>
+   :root { --bg: #f4f6f8; --card: #ffffff; --text: #111827; --muted: #4b5563; --border: #e5e7eb; } html, body { height: 100%; } body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; } header { background: #111827; color: white; padding: 14px 24px; } .header-top { display: flex; align-items: center; gap: 10px; } header img { width: 40px; height: 40px; border-radius: 8px; } nav { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px; } nav a { color: #cbd5e1; text-decoration: none; font-size: 14px; padding: 6px 8px; border-radius: 6px; } nav a:hover { background: rgba(255,255,255,0.1); color: white; } .wrapper { flex: 1; display: flex; justify-content: center; } .page { display: grid; grid-template-columns: 1fr 2.2fr 1fr; gap: 18px; max-width: 1400px; width: 100%; padding: 30px 20px; } .side { display: flex; flex-direction: column; gap: 18px; } /* IMAGES */ .side img:not(.divider) { width: 100%; height: 165px; object-fit: cover; border-radius: 14px; border: 1px solid #e5e7eb; cursor: pointer; transition: 0.25s ease; } .side img:not(.divider):hover { transform: scale(1.04); } /* DIVIDER */ .divider { width: 100%; height: 20px; max-height: 20px; object-fit: cover; display: block; margin: 6px 0; opacity: 0.6; border-radius: 10px; transition: 0.25s ease; cursor: default; } .hero { background: linear-gradient(135deg, #111827, #1f2937); color: white; border-radius: 16px; padding: 26px; } .hero h1 { margin: 0 0 8px 0; font-size: 22px; } .hero p { margin: 0; color: #cbd5e1; line-height: 1.7; font-size: 14px; } .card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 20px; overflow: hidden; } .card-title { font-size: 15px; font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; } .difficulty-row { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; } .pill { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: 0.2s ease; background: #f1f5f9; color: #475569; } .pill:hover { background: #e2e8f0; } .pill.active-easy { background: #dcfce7; color: #166534; border-color: #86efac; } .pill.active-medium { background: #fef9c3; color: #854d0e; border-color: #fde047; } .pill.active-hard { background: #fee2e2; color: #991b1b; border-color: #fca5a5; } .pill.active-any { background: #e0e7ff; color: #3730a3; border-color: #a5b4fc; } .gen-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; background: #111827; color: white; border: none; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s ease; } .gen-btn:hover { background: #1f2937; transform: translateY(-1px); } .output-box { margin-top: 14px; background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; font-size: 13px; color: var(--muted); line-height: 1.7; min-height: 48px; display: none; } .output-box.visible { display: block; } .output-box strong { color: var(--text); display: block; margin-bottom: 4px; font-size: 14px; } .form-group { margin-bottom: 12px; } .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; } .form-group input, .form-group textarea, .form-group select { width: 100%; box-sizing: border-box; padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: var(--text); background: white; transition: 0.2s ease; outline: none; } .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); } .form-group textarea { resize: vertical; min-height: 80px; } .submit-btn { padding: 9px 20px; background: #111827; color: white; border: none; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s ease; } .submit-btn:hover { background: #1f2937; transform: translateY(-1px); } .success-msg { display: none; margin-top: 10px; padding: 10px 14px; background: #dcfce7; color: #166534; border-radius: 8px; font-size: 13px; font-weight: 600; } .dropdown-toggle { display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; } .dropdown-toggle .arrow { font-size: 12px; transition: 0.2s ease; color: var(--muted); } .dropdown-toggle.open .arrow { transform: rotate(180deg); } .dropdown-body { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); } .dropdown-body.open { display: block; } .tab-row { display: flex; gap: 8px; margin-bottom: 16px; } .tab { padding: 7px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: white; color: var(--muted); transition: 0.2s ease; } .tab.active { background: #111827; color: white; border-color: #111827; } .tab-panel { display: none; } .tab-panel.active { display: block; } .notice { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #9a3412; margin-bottom: 14px; line-height: 1.6; } footer { background: #0f172a; color: #94a3b8; padding: 20px 20px; margin-top: auto; display: flex; flex-direction: column; } .footer-grid { max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; } .footer-bottom { max-width: 1200px; width: 100%; margin: 0 auto; text-align: center; font-size: 11px; opacity: 0.65; padding-top: 8px; padding-left: 4px; } footer h3 { color: white; font-size: 14px; margin-bottom: 10px; } footer a { display: block; color: #60a5fa; text-decoration: none; font-size: 13px; margin-bottom: 6px; transition: 0.2s ease; } footer a:hover { color: #93c5fd; text-decoration: underline; } @media (max-width: 600px) { .tab-row { flex-wrap: wrap; } .difficulty-row { flex-wrap: wrap; } }
+  </style>
+ </head>
+ <body>
+  <header>
+   <div class="header-top">
+    <img src="loho.png"/>
+    <h2>
+     Civilian Operations
+    </h2>
+   </div>
+   <nav>
+    <a href="index.html">
+     Home
+    </a>
+    <a href="about.html">
+     About
+    </a>
+    <a href="bog.html">
+     Board Of Governors
+    </a>
+    <a href="businesses.html">
+     Businesses
+    </a>
+    <a href="licensing.html">
+     Licensing
+    </a>
+    <a href="documents.html">
+     Documents
+    </a>
+   </nav>
+  </header>
+  <div class="wrapper">
+   <div class="page">
+    <!-- LEFT -->
+    <div class="side">
+     <img onclick="openModal(this.src)" src="MedalTVRoblox20260307200713770_-_Copy.png"/>
+     <img alt="divider" class="divider" src="image.png"/>
+     <img onclick="openModal(this.src)" src="MedalTVRoblox20260307200735969_-_Copy.png"/>
+    </div>
+    <div class="hero">
+     <h1>
+      🧩 Activites
+     </h1>
+     <p>
+      Generate roleplay ideas, build a civilian profile, submit suggestions, commend staff, or file a private report.
+     </p>
+    </div>
+    <!-- RP GENERATOR -->
+    <div class="card">
+     <div class="card-title">
+      🎲 Roleplay Idea Generator
+     </div>
+     <div class="difficulty-row">
+      <span class="pill active-any" data-diff="any" onclick="setDiff(this)">
+       Any
+      </span>
+      <span class="pill" data-diff="easy" onclick="setDiff(this)">
+       Easy
+      </span>
+      <span class="pill" data-diff="medium" onclick="setDiff(this)">
+       Medium
+      </span>
+      <span class="pill" data-diff="hard" onclick="setDiff(this)">
+       Hard
+      </span>
+     </div>
+     <button class="gen-btn" onclick="generateRP()">
+      ✨ Generate Idea
+     </button>
+     <div class="output-box" id="rp-output">
+     </div>
+    </div>
+    <!-- PROFILE GENERATOR -->
+    <div class="card">
+     <div class="card-title">
+      👤 Civilian Profile Generator
+     </div>
+     <p style="font-size:13px; color:var(--muted); margin:0 0 14px 0;">
+      Can't think of a character? Generate a full civilian profile, name, backstory, job, and more.
+     </p>
+     <button class="gen-btn" onclick="generateProfile()">
+      🎲 Generate Profile
+     </button>
+     <div class="output-box" id="profile-output">
+     </div>
+    </div>
+    <!-- SUGGESTIONS -->
+    <div class="card">
+     <div class="card-title">
+      💡 Submit a Suggestion
+     </div>
+     <div class="form-group">
+      <label>
+       Your Name (optional)
+      </label>
+      <input id="sug-name" placeholder="Leave blank to stay anonymous" type="text"/>
+     </div>
+     <div class="form-group">
+      <label>
+       Category
+      </label>
+      <select id="sug-cat">
+       <option>
+        Economy &amp; Businesses
+       </option>
+       <option>
+        Roleplay Systems
+       </option>
+       <option>
+        Website
+       </option>
+       <option>
+        Events
+       </option>
+       <option>
+        Other
+       </option>
+      </select>
+     </div>
+     <div class="form-group">
+      <label>
+       Your Suggestion
+      </label>
+      <textarea id="sug-text" placeholder="Describe your suggestion in detail..."></textarea>
+     </div>
+     <button class="submit-btn" onclick="submitSuggestion()">
+      Submit Suggestion
+     </button>
+     <div class="success-msg" id="sug-success">
+      ✅ Suggestion submitted! Thank you.
+     </div>
+    </div>
+    <!-- COMMENDATIONS & REPORTS -->
+    <div class="card">
+     <div class="dropdown-toggle" id="comm-toggle" onclick="toggleDropdown('comm-toggle', 'comm-body')">
+      <div class="card-title" style="margin:0;">
+       🏅 Commendations &amp; Reports
+      </div>
+      <span class="arrow">
+       ▼
+      </span>
+     </div>
+     <div class="dropdown-body" id="comm-body">
+      <div class="tab-row">
+       <div class="tab active" onclick="switchTab(this, 'tab-commend')">
+        🏅 Commendation
+       </div>
+       <div class="tab" onclick="switchTab(this, 'tab-report')">
+        🔒 Private Report
+       </div>
+      </div>
+      <div class="tab-panel active" id="tab-commend">
+       <div class="form-group">
+        <label>
+         Your Name (optional)
+        </label>
+        <input id="com-name" placeholder="Leave blank to stay anonymous" type="text"/>
+       </div>
+       <div class="form-group">
+        <label>
+         Who are you commending?
+        </label>
+        <input id="com-who" placeholder="Name or Roblox username" type="text"/>
+       </div>
+       <div class="form-group">
+        <label>
+         Their Role / Position
+        </label>
+        <input id="com-role" placeholder="e.g. Governor, Lt. Governor, etc.." type="text"/>
+       </div>
+       <div class="form-group">
+        <label>
+         Why do they deserve recognition?
+        </label>
+        <textarea id="com-reason" placeholder="Tell us what they did..."></textarea>
+       </div>
+       <button class="submit-btn" onclick="submitCommendation()">
+        Submit Commendation
+       </button>
+       <div class="success-msg" id="com-success">
+        ✅ Commendation submitted! We'll review it shortly.
+       </div>
+      </div>
+      <div class="tab-panel" id="tab-report">
+       <div class="notice">
+        ⚠️
+        <strong>
+         Use this responsibly.
+        </strong>
+        Private reports are for situations where you feel uncomfortable reporting through normal channels. Abuse of this system will result in it being removed entirely.
+       </div>
+       <div class="form-group">
+        <label>
+         Who are you reporting?
+        </label>
+        <input id="rep-who" placeholder="Name or Roblox username" type="text"/>
+       </div>
+       <div class="form-group">
+        <label>
+         Their Role / Position
+        </label>
+        <input id="rep-role" placeholder="e.g. Board of Governors, Business Owner..." type="text"/>
+       </div>
+       <div class="form-group">
+        <label>
+         What happened?
+        </label>
+        <textarea id="rep-reason" placeholder="Describe the situation in detail. Your identity will not be shared."></textarea>
+       </div>
+       <div class="form-group">
+        <label>
+         Any evidence? (link)
+        </label>
+        <input id="rep-evidence" placeholder="Paste a link to a screenshot or video (optional)" type="text"/>
+       </div>
+       <button class="submit-btn" onclick="submitReport()">
+        Submit Report Anonymously
+       </button>
+       <div class="success-msg" id="rep-success">
+        ✅ Report submitted anonymously. We'll review it.
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- RIGHT -->
+    <div class="side">
+     <img onclick="openModal(this.src)" src="MedalTVRoblox20260307193243532_-_Copy.png"/>
+     <img alt="divider" class="divider" src="image.png"/>
+     <img onclick="openModal(this.src)" src="MedalTVRoblox20260307200704891_-_Copy.png"/>
+    </div>
+   </div>
+  </div>
+  <!-- FOOTER -->
+  <footer>
+   <div class="footer-grid">
+    <div>
+     <h3>
+      🏛 Civ Ops
+     </h3>
+     <a href="index.html">
+      Home
+     </a>
+     <a href="about.html">
+      About
+     </a>
+     <a href="bog.html">
+      Board Of Governors
+     </a>
+     <a href="businesses.html">
+      Businesses
+     </a>
+     <a href="licensing.html">
+      Licensing
+     </a>
+     <a href="documents.html">
+      Documents
+     </a>
+    </div>
+    <div>
+     <h3>
+      📚 Resources
+     </h3>
+     <a href="https://discord.com/channels/1411836815174013048/1411846250092822539" target="_blank">
+      Applications
+     </a>
+     <a href="https://docs.google.com/document/d/1Xyz_473by6sskYHBkjv5-yyr0QlATa8WGaIO-xJFGZ4/edit?usp=sharing" target="_blank">
+      Rules &amp; Regulations
+     </a>
+     <a href="https://docs.google.com/document/d/1YK7AHLKnuTsTiLnHeO7Ybr0RB37CluGGmw-sU-4mFeI/edit?usp=sharing" target="_blank">
+      Economic Guidelines
+     </a>
+    </div>
+    <div>
+     <h3>
+      🌐 Community
+     </h3>
+     <a href="https://www.roblox.com/communities/620380444/KSRP-Civilian-Operations#!/about" target="_blank">
+      Roblox Group
+     </a>
+     <a href="https://discord.gg/59yaUTcSEj" target="_blank">
+      Discord
+     </a>
+    </div>
+   </div>
+   <p class="footer-bottom">
+    © KSRP Civilian Operations - All Rights Reserved.
+   </p>
+  </footer>
+  <script>
+   const WORKER_URL = "https://civops-webhook.ksrp.workers.dev"; // --- DIFFICULTY --- let currentDiff = 'any'; function setDiff(el) { document.querySelectorAll('.pill').forEach(p => p.className = 'pill'); currentDiff = el.dataset.diff; el.classList.add('active-' + currentDiff); } // --- RP IDEAS --- const rpIdeas = { easy: [ { title: "Civilian Traffic Commuter", desc: "Drive from one town to another obeying all speed limits, stop lights, and signs. Treat it like a realistic daily commute in Kentucky." }, { title: "Gas Station Routine Worker", desc: "Drive between gas stations, refuel your vehicle, and roleplay a shift where you keep your car maintained and ready." }, { title: "Store Stop Roleplay", desc: "Stop at stores (like convenience stores or diners on the map), park correctly, and roleplay quick errands between drives." }, { title: "Basic Patrol Driver", desc: "Drive through all towns in Kentucky while observing traffic flow and staying out of active police scenes." }, { title: "Parking Enforcement Challenge", desc: "Find different parking lots and practice realistic parking. Only park in legal spots and avoid blocking traffic." } ], medium: [ { title: "Delivery Driver", desc: "Get on the delivery job and deliver mail for 10-15 minutes or more." }, { title: "Tow & Recovery Spotter", desc: "Drive around looking for crashed or abandoned vehicles on roads and roleplay reporting or towing them." }, { title: "Speed Compliance Run", desc: "Travel through all major roads strictly following posted speed limits and fully stopping at intersections." }, { title: "Police Activity Avoidance Driver", desc: "Patrol the map while avoiding active police scenes, roadblocks, and traffic stops." }, { title: "Vehicle Inspection Loop", desc: "Stop at multiple locations and roleplay checking your vehicle condition (fuel, damage, parking correctness) before continuing." } ], hard: [ { title: "Full County Work Shift", desc: "Complete a 25–30 minute continuous driving shift in Kentucky with no crashes, violations, or reckless driving." }, { title: "Perfect Driver Certification Run", desc: "Drive across all major towns without a single traffic violation, accident, or off-road shortcut." }, { title: "Emergency Route Navigation", desc: "Continuously drive while rerouting around active emergencies, crashes, and police activity without stopping in scenes." }, { title: "No Stop Movement Challenge", desc: "Drive continuously for 15+ minutes without fully stopping unless at traffic lights, while obeying all laws." }, { title: "Entire Map Coverage Shift", desc: "Drive through every major road and town in Kentucky in one uninterrupted, law-abiding run." } ] }; function generateRP() { const pool = currentDiff === 'any' ? [...rpIdeas.easy, ...rpIdeas.medium, ...rpIdeas.hard] : rpIdeas[currentDiff]; const idea = pool[Math.floor(Math.random() * pool.length)]; const box = document.getElementById('rp-output'); box.innerHTML = '<strong>' + idea.title + '</strong>' + idea.desc; box.classList.add('visible'); } // --- PROFILE GENERATOR --- const firstNames = [ "James","Maria","Devin","Chloe","Marcus","Priya","Tyler","Aaliyah", "Nathan","Sofia","Jordan","Keisha","Eli","Camila","Leon", "Brooke","Logan","Isaiah","Hannah","Dylan","Amira","Caleb","Autumn", "Noah","Lily","Evan","Zoe","Mason","Ruby" ]; const lastNames = [ "Hartley","Nguyen","Brooks","Rivera","Coleman","Patel","Sullivan","Kim", "Delgado","Pierce","Washington","Voss","Moreno","Stein","Anderson", "Fletcher","Bennett","Crawford","Hayes","Reed","Monroe","Griffin", "Cooper","Bell","Ward","Reynolds","Price" ]; const jobs = [ "Gas Station Attendant", "Restaurant Server", "Coffee Shop Barista", "Downtown Delivery Driver", "Courier Package Driver", "Auto Mechanic (Local Shop)", "Farmhand", "Food Truck Owner", "Small Business Owner", "Uber / Taxi Driver", "Real Estate Assistant", "Landscaping Worker", "Roadside Assistance Technician", "Freelance Photographer", "Appliance Repair Technician", "Hotel Front Desk Worker", "Janitor / Maintenance Worker" ]; const backstories = [ "Moved to Lexington for affordable living and steady work opportunities.", "Born and raised in Kentucky suburbs, prefers a quiet routine life.", "Recently switched careers and is rebuilding their income from scratch.", "Works multiple small jobs to stay ahead of bills and rent.", "Moved here from out of state after family settled in the area.", "Young adult trying to gain independence while working entry-level jobs.", "Came to Lexington for college and stayed after graduation.", "Left a fast-paced city life to live somewhere calmer and cheaper.", "Supports family back home while working full-time locally.", "Recently started a small business and is trying to grow a customer base." ]; const quirks = [ "Always takes the same route everywhere, even if it's slower.", "Refuses to eat at the same place twice in a row.", "Keeps receipts for everything and organizes them carefully.", "Always arrives early to every shift or appointment.", "Listens to local radio or music while working, never silence.", "Prefers cash and avoids card payments when possible.", "Keeps vehicle interior extremely clean at all times.", "Stops for breaks at the exact same locations daily.", "Has a habit of mentally planning the whole day in advance.", "Remembers every customer or client they’ve interacted with." ]; function generateProfile() { const name = firstNames[Math.floor(Math.random()*firstNames.length)] + ' ' + lastNames[Math.floor(Math.random()*lastNames.length)]; const age = Math.floor(Math.random() * 35) + 22; const job = jobs[Math.floor(Math.random()*jobs.length)]; const backstory = backstories[Math.floor(Math.random()*backstories.length)]; const quirk = quirks[Math.floor(Math.random()*quirks.length)]; const box = document.getElementById('profile-output'); box.innerHTML = '<strong>' + name + ', Age ' + age + '</strong>' + '<span style="display:block;margin-bottom:6px;"><b style="color:#374151;">Occupation:</b> ' + job + '</span>' + '<span style="display:block;margin-bottom:6px;"><b style="color:#374151;">Background:</b> ' + backstory + '</span>' + '<span style="display:block;"><b style="color:#374151;">Notable trait:</b> ' + quirk + '</span>'; box.classList.add('visible'); } // --- DROPDOWN --- function toggleDropdown(toggleId, bodyId) { document.getElementById(toggleId).classList.toggle('open'); document.getElementById(bodyId).classList.toggle('open'); } // --- TABS --- function switchTab(el, panelId) { el.closest('.dropdown-body').querySelectorAll('.tab').forEach(t => t.classList.remove('active')); el.closest('.dropdown-body').querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active')); el.classList.add('active'); document.getElementById(panelId).classList.add('active'); } // --- SEND TO WORKER --- async function sendToWorker(embed) { try { const res = await fetch(WORKER_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ embeds: [embed] }) }); if (!res.ok) throw new Error("Worker returned " + res.status); return true; } catch (err) { console.error("Submit error:", err); alert("Failed to submit. Please try again later."); return false; } } function showSuccess(id) { const el = document.getElementById(id); el.style.display = "block"; setTimeout(() => { el.style.display = "none"; }, 4000); } // --- SUGGESTION --- async function submitSuggestion() { const name = document.getElementById("sug-name").value.trim() || "Anonymous"; const category = document.getElementById("sug-cat").value; const text = document.getElementById("sug-text").value.trim(); if (!text) { alert("Please write your suggestion before submitting."); return; } const ok = await sendToWorker({ title: "💡 New Suggestion", color: 0x6366f1, fields: [ { name: "Submitted By", value: name, inline: true }, { name: "Category", value: category, inline: true }, { name: "Suggestion", value: text } ], timestamp: new Date().toISOString() }); if (ok) { document.getElementById("sug-text").value = ""; showSuccess("sug-success"); } } // --- COMMENDATION --- async function submitCommendation() { const name = document.getElementById("com-name").value.trim() || "Anonymous"; const who = document.getElementById("com-who").value.trim(); const role = document.getElementById("com-role").value.trim(); const reason = document.getElementById("com-reason").value.trim(); if (!who || !reason) { alert("Please fill in who you're commending and why."); return; } const ok = await sendToWorker({ title: "🏅 New Commendation", color: 0xf59e0b, fields: [ { name: "Submitted By", value: name, inline: true }, { name: "Commending", value: who, inline: true }, { name: "Their Role", value: role || "Not specified", inline: true }, { name: "Reason", value: reason } ], timestamp: new Date().toISOString() }); if (ok) { document.getElementById("com-who").value = ""; document.getElementById("com-role").value = ""; document.getElementById("com-reason").value = ""; showSuccess("com-success"); } } // --- PRIVATE REPORT --- async function submitReport() { const who = document.getElementById("rep-who").value.trim(); const role = document.getElementById("rep-role").value.trim(); const reason = document.getElementById("rep-reason").value.trim(); const evidence = document.getElementById("rep-evidence").value.trim(); if (!who || !reason) { alert("Please fill in who you're reporting and what happened."); return; } const ok = await sendToWorker({ title: "🔒 Anonymous Private Report", color: 0xef4444, fields: [ { name: "Reporting", value: who, inline: true }, { name: "Their Role", value: role || "Not specified", inline: true }, { name: "What Happened", value: reason }, { name: "Evidence", value: evidence || "None provided" } ], footer: { text: "This report was submitted anonymously." }, timestamp: new Date().toISOString() }); if (ok) { document.getElementById("rep-who").value = ""; document.getElementById("rep-role").value = ""; document.getElementById("rep-reason").value = ""; document.getElementById("rep-evidence").value = ""; showSuccess("rep-success"); } }
+  </script>
+ </body>
+</html>
