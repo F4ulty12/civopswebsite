@@ -556,26 +556,73 @@ function setDiff(el) {
 // --- RP IDEAS ---
 const rpIdeas = {
   easy: [
-    { title: "Corner Store Run", desc: "Head to a local convenience store to pick up supplies. Chat with other civilians along the way and maybe bump into someone you know." },
-    { title: "Traffic Stop Witness", desc: "You witness a routine traffic stop near your home. Decide whether to mind your business or stick around." },
-    { title: "Morning Commute", desc: "Make your way to work or school. Deal with traffic, find parking, and make small talk with passersby." },
-    { title: "Lunch Break", desc: "Find somewhere to grab lunch during a break. Maybe a food truck, diner, or park bench. Strike up a conversation." },
-    { title: "Car Trouble", desc: "Your vehicle breaks down on the side of the road. Wait for help, call a friend, or try to figure it out yourself." },
+    {
+      title: "Civilian Traffic Commuter",
+      desc: "Drive from one town to another obeying all speed limits, stop lights, and signs. Treat it like a realistic daily commute in Kentucky."
+    },
+    {
+      title: "Gas Station Routine Worker",
+      desc: "Drive between gas stations, refuel your vehicle, and roleplay a shift where you keep your car maintained and ready."
+    },
+    {
+      title: "Store Stop Roleplay",
+      desc: "Stop at stores (like convenience stores or diners on the map), park correctly, and roleplay quick errands between drives."
+    },
+    {
+      title: "Basic Patrol Driver",
+      desc: "Drive through all towns in Kentucky while observing traffic flow and staying out of active police scenes."
+    },
+    {
+      title: "Parking Enforcement Challenge",
+      desc: "Find different parking lots and practice realistic parking. Only park in legal spots and avoid blocking traffic."
+    }
   ],
+
   medium: [
-    { title: "Business Dispute", desc: "A local business is accused of selling counterfeit goods. Are you the owner trying to clear your name, an investigator, or a concerned buyer?" },
-    { title: "Neighborhood Watch", desc: "Strange things have been happening in your neighborhood at night. Organize residents and figure out what's going on." },
-    { title: "Job Interview Gone Wrong", desc: "You show up to a job interview and things immediately feel off. The interviewer is acting strangely, what do you do?" },
-    { title: "Lost & Found", desc: "You find a wallet or bag with no ID inside. Do you turn it in, try to find the owner yourself, or keep it?" },
-    { title: "Medical Emergency", desc: "Someone collapses nearby in public. Do you have the skills to help? Call it in and manage the situation until EMS arrives." },
+    {
+      title: "Delivery Driver",
+      desc: "Get on the delivery job and deliver mail for 10-15 minutes or more."
+    },
+    {
+      title: "Tow & Recovery Spotter",
+      desc: "Drive around looking for crashed or abandoned vehicles on roads and roleplay reporting or towing them."
+    },
+    {
+      title: "Speed Compliance Run",
+      desc: "Travel through all major roads strictly following posted speed limits and fully stopping at intersections."
+    },
+    {
+      title: "Police Activity Avoidance Driver",
+      desc: "Patrol the map while avoiding active police scenes, roadblocks, and traffic stops."
+    },
+    {
+      title: "Vehicle Inspection Loop",
+      desc: "Stop at multiple locations and roleplay checking your vehicle condition (fuel, damage, parking correctness) before continuing."
+    }
   ],
+
   hard: [
-    { title: "Witness to a Crime", desc: "You saw something you weren't supposed to see. Now someone knows. Decide how to handle the pressure — report it, stay silent, or flee." },
-    { title: "Corrupt Official", desc: "You have evidence that a local government figure is taking bribes. Going public could put you in danger. What's your move?" },
-    { title: "Underground Economy", desc: "You've accidentally stumbled into an off-the-books operation. Play it cool, get out, or report it, each choice has consequences." },
-    { title: "Hostage Negotiation (Civilian Side)", desc: "A standoff is happening nearby. You're caught between law enforcement and the scene. Navigate the chaos and keep yourself and others safe." },
-    { title: "Blackmail", desc: "You receive an anonymous message with something embarrassing about you and a demand. Who sent it and how do you respond?" },
-  ],
+    {
+      title: "Full County Work Shift",
+      desc: "Complete a 25–30 minute continuous driving shift in Kentucky with no crashes, violations, or reckless driving."
+    },
+    {
+      title: "Perfect Driver Certification Run",
+      desc: "Drive across all major towns without a single traffic violation, accident, or off-road shortcut."
+    },
+    {
+      title: "Emergency Route Navigation",
+      desc: "Continuously drive while rerouting around active emergencies, crashes, and police activity without stopping in scenes."
+    },
+    {
+      title: "No Stop Movement Challenge",
+      desc: "Drive continuously for 15+ minutes without fully stopping unless at traffic lights, while obeying all laws."
+    },
+    {
+      title: "Entire Map Coverage Shift",
+      desc: "Drive through every major road and town in Kentucky in one uninterrupted, law-abiding run."
+    }
+  ]
 };
 
 function generateRP() {
@@ -589,30 +636,64 @@ function generateRP() {
 }
 
 // --- PROFILE GENERATOR ---
-const firstNames = ["James","Maria","Devin","Chloe","Marcus","Priya","Tyler","Aaliyah","Nathan","Sofia","Jordan","Keisha","Eli","Camila","Leon"];
-const lastNames = ["Hartley","Nguyen","Brooks","Rivera","Coleman","Patel","Sullivan","Okafor","Kim","Delgado","Pierce","Washington","Voss","Moreno","Stein"];
-const jobs = ["Mechanic","Nurse","Real Estate Agent","Restaurant Owner","Delivery Driver","Freelance Photographer","Construction Worker","Accountant","Teacher","Taxi Driver","Chef","Security Guard","Journalist","Electrician","Pharmacist"];
-const backstories = [
-  "Moved to Kentucky three years ago after a messy divorce, trying to start fresh.",
-  "Born and raised in the area, never left, proud of it.",
-  "Recently laid off and picking up side jobs while looking for something steady.",
-  "Retired military, adjusting to civilian life and finding it harder than expected.",
-  "Came here for college and never went back home, fell in love with the community.",
-  "Running from a complicated past in another state. Keeps to themselves mostly.",
-  "Caring for an elderly parent while juggling a demanding job.",
-  "Immigrant who worked hard to build a life here over the last decade.",
-  "Young entrepreneur who dropped out of college to chase a business idea.",
-  "Single parent raising two kids on one income, resourceful and resilient.",
+const firstNames = [
+  "James","Maria","Devin","Chloe","Marcus","Priya","Tyler","Aaliyah",
+  "Nathan","Sofia","Jordan","Keisha","Eli","Camila","Leon",
+  "Brooke","Logan","Isaiah","Hannah","Dylan","Amira","Caleb","Autumn",
+  "Noah","Lily","Evan","Zoe","Mason","Ruby"
 ];
+
+const lastNames = [
+  "Hartley","Nguyen","Brooks","Rivera","Coleman","Patel","Sullivan","Kim",
+  "Delgado","Pierce","Washington","Voss","Moreno","Stein","Anderson",
+  "Fletcher","Bennett","Crawford","Hayes","Reed","Monroe","Griffin",
+  "Cooper","Bell","Ward","Reynolds","Price"
+];
+
+const jobs = [
+  "Gas Station Attendant",
+  "Restaurant Server",
+  "Coffee Shop Barista",
+  "Downtown Delivery Driver",
+  "Courier Package Driver",
+  "Auto Mechanic (Local Shop)",
+  "Farmhand",
+  "Food Truck Owner",
+  "Small Business Owner",
+  "Uber / Taxi Driver",
+  "Real Estate Assistant",
+  "Landscaping Worker",
+  "Roadside Assistance Technician",
+  "Freelance Photographer",
+  "Appliance Repair Technician",
+  "Hotel Front Desk Worker",
+  "Janitor / Maintenance Worker"
+];
+
+const backstories = [
+  "Moved to Lexington for affordable living and steady work opportunities.",
+  "Born and raised in Kentucky suburbs, prefers a quiet routine life.",
+  "Recently switched careers and is rebuilding their income from scratch.",
+  "Works multiple small jobs to stay ahead of bills and rent.",
+  "Moved here from out of state after family settled in the area.",
+  "Young adult trying to gain independence while working entry-level jobs.",
+  "Came to Lexington for college and stayed after graduation.",
+  "Left a fast-paced city life to live somewhere calmer and cheaper.",
+  "Supports family back home while working full-time locally.",
+  "Recently started a small business and is trying to grow a customer base."
+];
+
 const quirks = [
-  "Always carries a notepad and jots things down constantly.",
-  "Refuses to use GPS, insists on knowing every road by memory.",
-  "Has a strong opinion about coffee and will tell you about it unprompted.",
-  "Talks to strangers like they're old friends.",
-  "Deeply superstitious, won't make big decisions on certain days.",
-  "Compulsively early to everything.",
-  "Has a habit of whistling while walking.",
-  "Keeps a running list of debts, people owe them favors, they never forget.",
+  "Always takes the same route everywhere, even if it's slower.",
+  "Refuses to eat at the same place twice in a row.",
+  "Keeps receipts for everything and organizes them carefully.",
+  "Always arrives early to every shift or appointment.",
+  "Listens to local radio or music while working, never silence.",
+  "Prefers cash and avoids card payments when possible.",
+  "Keeps vehicle interior extremely clean at all times.",
+  "Stops for breaks at the exact same locations daily.",
+  "Has a habit of mentally planning the whole day in advance.",
+  "Remembers every customer or client they’ve interacted with."
 ];
 
 function generateProfile() {
