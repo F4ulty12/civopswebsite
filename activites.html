@@ -6,10 +6,10 @@
 <link rel="icon" type="image/png" href="loho.png">
 <title>Tools & Resources — Civilian Operations</title>
 
-<meta property="og:title" content="Tools & Resources — Civilian Operations" />
+<meta property="og:title" content="Civilian Operations" />
 <meta property="og:image" content="https://civilianoperations.ksrp.workers.dev/smallerlogo.png" />
-<meta property="og:url" content="https://civilianoperations.ksrp.workers.dev/tools.html" />
-<meta property="og:description" content="Roleplay tools, suggestions, commendations, and more for KSRP Civilian Operations." />
+<meta property="og:url" content="https://civilianoperations.ksrp.workers.dev/" />
+<meta property="og:description" content="The civilian backbone of Kentucky State Roleplay. We manage realism, economy systems, businesses, and immersive RP structure." />
 <meta property="og:type" content="website" />
 
 <style>
@@ -402,7 +402,7 @@ footer a:hover {
 
   <div class="hero">
     <h1>🛠 Tools & Resources</h1>
-    <p>Generate roleplay ideas, build a civilian profile, submit suggestions, commend staff, or file a private report — all in one place.</p>
+    <p>Generate roleplay ideas, build a civilian profile, submit suggestions, commend staff, or file a private report.</p>
   </div>
 
   <!-- RP GENERATOR -->
@@ -421,7 +421,7 @@ footer a:hover {
   <!-- PROFILE GENERATOR -->
   <div class="card">
     <div class="card-title">👤 Civilian Profile Generator</div>
-    <p style="font-size:13px; color:var(--muted); margin:0 0 14px 0;">Can't think of a character? Generate a full civilian profile — name, backstory, job, and more.</p>
+    <p style="font-size:13px; color:var(--muted); margin:0 0 14px 0;">Can't think of a character? Generate a full civilian profile, name, backstory, job, and more.</p>
     <button class="gen-btn" onclick="generateProfile()">🎲 Generate Profile</button>
     <div class="output-box" id="profile-output"></div>
   </div>
@@ -475,7 +475,7 @@ footer a:hover {
         </div>
         <div class="form-group">
           <label>Their Role / Position</label>
-          <input type="text" id="com-role" placeholder="e.g. Board of Governors, Business Owner...">
+          <input type="text" id="com-role" placeholder="e.g. Governor, Lt. Governor, etc..">
         </div>
         <div class="form-group">
           <label>Why do they deserve recognition?</label>
@@ -565,14 +565,14 @@ const rpIdeas = {
   medium: [
     { title: "Business Dispute", desc: "A local business is accused of selling counterfeit goods. Are you the owner trying to clear your name, an investigator, or a concerned buyer?" },
     { title: "Neighborhood Watch", desc: "Strange things have been happening in your neighborhood at night. Organize residents and figure out what's going on." },
-    { title: "Job Interview Gone Wrong", desc: "You show up to a job interview and things immediately feel off. The interviewer is acting strangely — what do you do?" },
+    { title: "Job Interview Gone Wrong", desc: "You show up to a job interview and things immediately feel off. The interviewer is acting strangely, what do you do?" },
     { title: "Lost & Found", desc: "You find a wallet or bag with no ID inside. Do you turn it in, try to find the owner yourself, or keep it?" },
     { title: "Medical Emergency", desc: "Someone collapses nearby in public. Do you have the skills to help? Call it in and manage the situation until EMS arrives." },
   ],
   hard: [
     { title: "Witness to a Crime", desc: "You saw something you weren't supposed to see. Now someone knows. Decide how to handle the pressure — report it, stay silent, or flee." },
     { title: "Corrupt Official", desc: "You have evidence that a local government figure is taking bribes. Going public could put you in danger. What's your move?" },
-    { title: "Underground Economy", desc: "You've accidentally stumbled into an off-the-books operation. Play it cool, get out, or report it — each choice has consequences." },
+    { title: "Underground Economy", desc: "You've accidentally stumbled into an off-the-books operation. Play it cool, get out, or report it, each choice has consequences." },
     { title: "Hostage Negotiation (Civilian Side)", desc: "A standoff is happening nearby. You're caught between law enforcement and the scene. Navigate the chaos and keep yourself and others safe." },
     { title: "Blackmail", desc: "You receive an anonymous message with something embarrassing about you and a demand. Who sent it and how do you respond?" },
   ],
@@ -594,25 +594,25 @@ const lastNames = ["Hartley","Nguyen","Brooks","Rivera","Coleman","Patel","Sulli
 const jobs = ["Mechanic","Nurse","Real Estate Agent","Restaurant Owner","Delivery Driver","Freelance Photographer","Construction Worker","Accountant","Teacher","Taxi Driver","Chef","Security Guard","Journalist","Electrician","Pharmacist"];
 const backstories = [
   "Moved to Kentucky three years ago after a messy divorce, trying to start fresh.",
-  "Born and raised in the area, never left — proud of it.",
+  "Born and raised in the area, never left, proud of it.",
   "Recently laid off and picking up side jobs while looking for something steady.",
   "Retired military, adjusting to civilian life and finding it harder than expected.",
-  "Came here for college and never went back home — fell in love with the community.",
+  "Came here for college and never went back home, fell in love with the community.",
   "Running from a complicated past in another state. Keeps to themselves mostly.",
   "Caring for an elderly parent while juggling a demanding job.",
   "Immigrant who worked hard to build a life here over the last decade.",
   "Young entrepreneur who dropped out of college to chase a business idea.",
-  "Single parent raising two kids on one income — resourceful and resilient.",
+  "Single parent raising two kids on one income, resourceful and resilient.",
 ];
 const quirks = [
   "Always carries a notepad and jots things down constantly.",
-  "Refuses to use GPS — insists on knowing every road by memory.",
+  "Refuses to use GPS, insists on knowing every road by memory.",
   "Has a strong opinion about coffee and will tell you about it unprompted.",
   "Talks to strangers like they're old friends.",
-  "Deeply superstitious — won't make big decisions on certain days.",
+  "Deeply superstitious, won't make big decisions on certain days.",
   "Compulsively early to everything.",
   "Has a habit of whistling while walking.",
-  "Keeps a running list of debts — people owe them favors, they never forget.",
+  "Keeps a running list of debts, people owe them favors, they never forget.",
 ];
 
 function generateProfile() {
