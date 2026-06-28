@@ -650,12 +650,102 @@ function switchTab(el, panelId) {
   document.getElementById(panelId).classList.add('active');
 }
 
-function submitForm(successId) {
-  document.getElementById(successId).style.display = 'block';
-  setTimeout(() => {
-    document.getElementById(successId).style.display = 'none';
-  }, 4000);
+async function submitForm(successId, type, payload) {
+  try {
+    await fetch("/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        type,
+        ...payload
+      })
+    });
+
+    document.getElementById(successId).style.display = "block";
+
+    setTimeout(() => {
+      document.getElementById(successId).style.display = "none";
+    }, 4000);
+
+  } catch (err) {
+    alert("Failed to submit. Try again later.");
+    console.error(err);
+  }
 }
+<script>
+
+function getSuggestionPayload() {
+  return {
+    name: document.getElementById("sug-name")?.value || "",
+    category: document.getElementById("sug-cat")?.value || "",
+    text: document.getElementById("sug-text")?.value || ""
+  };
+}
+
+function getCommendationPayload() {
+  return {
+    name: document.getElementById("com-name")?.value || "",
+    who: document.getElementById("com-who")?.value || "",
+    role: document.getElementById("com-role")?.value || "",
+    reason: document.getElementById("com-reason")?.value || ""
+  };
+}
+
+function getReportPayload() {
+  return {
+    who: document.getElementById("rep-who")?.value || "",
+    role: document.getElementById("rep-role")?.value || "",
+    reason: document.getElementById("rep-reason")?.value || "",
+    evidence: document.getElementById("rep-evidence")?.value || ""
+  };
+}
+
+const originalSubmitForm = submitForm;
+
+submitForm = async function(successId) {
+
+  let type = "";
+  let payload = {};
+
+  if (successId === "sug-success") {
+    type = "suggestion";
+    payload = getSuggestionPayload();
+  }
+
+  if (successId === "com-success") {
+    type = "commendation";
+    payload = getCommendationPayload();
+  }
+
+  if (successId === "rep-success") {
+    type = "report";
+    payload = getReportPayload();
+  }
+
+  try {
+    await fetch("/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type,
+        ...payload
+      })
+    });
+
+    document.getElementById(successId).style.display = "block";
+
+    setTimeout(() => {
+      document.getElementById(successId).style.display = "none";
+    }, 4000);
+
+  } catch (err) {
+    alert("Failed to submit. Try again later.");
+    console.error(err);
+  }
+};
+
 </script>
 
 </body>
