@@ -1,13 +1,16 @@
 export async function onRequestPost(context) {
   const data = await context.request.json();
-
   const webhookURL = context.env.DISCORD_WEBHOOK_URL;
+
+  if (!webhookURL) {
+    return new Response("Missing webhook", { status: 500 });
+  }
 
   let embed = {
     title: "New Submission",
-    color: 5814783,
-    fields: [],
-    timestamp: new Date().toISOString()
+    color: 3447003,
+    timestamp: new Date().toISOString(),
+    fields: []
   };
 
   // Suggestion
@@ -15,29 +18,30 @@ export async function onRequestPost(context) {
     embed.title = "💡 New Suggestion";
     embed.fields = [
       { name: "Name", value: data.name || "Anonymous" },
-      { name: "Category", value: data.category },
-      { name: "Suggestion", value: data.text }
+      { name: "Category", value: data.category || "N/A" },
+      { name: "Suggestion", value: data.text || "N/A" }
     ];
   }
 
   // Commendation
-  if (data.type === "commendation") {
+  else if (data.type === "commendation") {
     embed.title = "🏅 New Commendation";
     embed.fields = [
       { name: "From", value: data.name || "Anonymous" },
-      { name: "Who", value: data.who },
-      { name: "Role", value: data.role },
-      { name: "Reason", value: data.reason }
+      { name: "Who", value: data.who || "N/A" },
+      { name: "Role", value: data.role || "N/A" },
+      { name: "Reason", value: data.reason || "N/A" }
     ];
   }
 
   // Report
-  if (data.type === "report") {
+  else if (data.type === "report") {
     embed.title = "🔒 Private Report";
+    embed.color = 15158332;
     embed.fields = [
-      { name: "Reported User", value: data.who },
-      { name: "Role", value: data.role },
-      { name: "Details", value: data.reason },
+      { name: "Reported User", value: data.who || "N/A" },
+      { name: "Role", value: data.role || "N/A" },
+      { name: "Details", value: data.reason || "N/A" },
       { name: "Evidence", value: data.evidence || "None" }
     ];
   }
@@ -45,8 +49,12 @@ export async function onRequestPost(context) {
   await fetch(webhookURL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ embeds: [embed] })
+    body: JSON.stringify({
+      embeds: [embed]
+    })
   });
 
-  return new Response("OK", { status: 200 });
+  return new Response(JSON.stringify({ success: true }), {
+    headers: { "Content-Type": "application/json" }
+  });
 }
